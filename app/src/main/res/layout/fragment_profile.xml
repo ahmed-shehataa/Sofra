@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/profile_fragment_ll_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/dim_12dp"
+        android:orientation="vertical">
+
+      <RelativeLayout
+          android:layout_gravity="center_horizontal"
+          android:layout_width="@dimen/dim_80"
+          android:layout_height="@dimen/dim_80"
+          android:layout_marginBottom="@dimen/dim_12dp">
+          <de.hdodenhof.circleimageview.CircleImageView
+              android:id="@+id/profile_fragment_iv_logo"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_gravity="center"
+              android:src="@drawable/fake_pic" />
+          <ImageView
+              android:layout_alignParentStart="true"
+              android:layout_alignParentBottom="true"
+              android:tint="@color/colorRedLight"
+              android:layout_gravity="bottom"
+              android:layout_width="@dimen/dim_20dp"
+              android:layout_height="@dimen/dim_20dp"
+              android:src="@drawable/ic_edit_solid"/>
+
+      </RelativeLayout>
+        <EditText
+            android:drawableStart="@drawable/ic_user"
+            android:drawableTint="@color/colorBlack"
+            android:drawablePadding="@dimen/album_dp_4"
+            android:id="@+id/profile_fragment_et_restaurant_name"
+            android:hint="@string/restaurant_name"
+            android:inputType="text"
+            style="@style/ETChangePassword"
+            />
+        <EditText
+            android:drawableStart="@drawable/ic_mail"
+            android:drawableTint="@color/colorBlack"
+            android:drawablePadding="@dimen/album_dp_4"
+            android:id="@+id/profile_fragment_et_restaurant_email"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            style="@style/ETChangePassword"
+            />
+
+        <Spinner
+            android:id="@+id/profile_fragment_sp_city"
+            android:theme="@style/mySpinnerItemStyle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/album_dp_45"
+            android:textAlignment="viewStart"
+            android:layout_marginStart="@dimen/dim_20dp"
+            android:layout_marginEnd="@dimen/dim_20dp"
+            android:layout_marginBottom="@dimen/dim_8dp"
+            android:background="@drawable/edit_text_background_gray"
+            />
+
+
+        <Spinner
+            android:id="@+id/profile_fragment_sp_region"
+            android:theme="@style/mySpinnerItemStyle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/album_dp_45"
+            android:textAlignment="viewStart"
+            android:layout_marginStart="@dimen/dim_20dp"
+            android:layout_marginEnd="@dimen/dim_20dp"
+            android:layout_marginBottom="@dimen/dim_8dp"
+            android:background="@drawable/edit_text_background_gray"
+            />
+
+        <EditText
+            android:drawableStart="@drawable/ic_flag"
+            android:drawableTint="@color/colorBlack"
+            android:drawablePadding="@dimen/album_dp_4"
+            android:id="@+id/profile_fragment_et_delivery_time"
+            android:hint="@string/min_order"
+            android:inputType="number"
+            style="@style/ETChangePassword"
+            />
+
+        <Button
+            android:id="@+id/profile_fragment_btn_go_on"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/group"
+            android:layout_marginStart="@dimen/dim_80"
+            android:layout_marginTop="@dimen/dim_8dp"
+            android:layout_marginEnd="@dimen/dim_80"
+            android:layout_marginBottom="@dimen/dim_8dp"
+            android:background="@drawable/button_backgrond_red_redius"
+            android:backgroundTint="@color/colorRedLight"
+            android:text="@string/go_on"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/txt_16sp" />
+
+    </LinearLayout>
+</ScrollView>

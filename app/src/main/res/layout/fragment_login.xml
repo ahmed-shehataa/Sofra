@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/login_fragment_rl_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/auth">
+
+    <RelativeLayout
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/loginbackground">
+
+
+        <TextView
+            android:id="@+id/txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/login"
+            android:textColor="@color/colorWhite"
+            android:layout_marginTop="@dimen/dim_40dp"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:id="@+id/group"
+            android:layout_marginTop="@dimen/dim_40dp"
+            android:layout_marginStart="@dimen/dim_40dp"
+            android:layout_marginEnd="@dimen/dim_40dp"
+            android:layout_below="@id/txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/TextInputLayout"
+                app:hintEnabled="true"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/login_fragment_et_email"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress"
+                    android:drawableStart="@drawable/ic_mail"
+                    style="@style/ETTheme"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/TextInputLayout"
+                app:hintEnabled="true"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/colorWhite"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/login_fragment_et_password"
+                    android:inputType="text"
+                    android:textColor="@color/colorWhiteLight"
+                    android:hint="@string/password"
+                    android:drawableStart="@drawable/ic_lock"
+                    style="@style/ETTheme"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/login_fragment_tv_reset_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/do_you_forget_password"
+                android:layout_gravity="end"
+                android:textSize="12sp"
+                android:textColor="@color/colorWhiteLight"/>
+
+        </LinearLayout>
+
+        <Button
+
+            android:drawablePadding="@dimen/dim_8dp"
+            android:drawableStart="@drawable/ic_login"
+            android:id="@+id/login_fragment_btn_sign_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/group"
+            android:layout_marginTop="@dimen/dim_16dp"
+            android:paddingStart="@dimen/dim_60dp"
+            android:paddingEnd="@dimen/dim_60dp"
+            android:background="@drawable/button_backgrond_red_redius"
+            android:text="@string/sign_in"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/txt_16sp" />
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:alpha="0.5"
+            android:background="@color/colorBlackDark">
+
+            <LinearLayout
+                android:paddingTop="@dimen/dim_8dp"
+                android:paddingBottom="@dimen/dim_8dp"
+                android:id="@+id/login_fragment_tv_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dim_4dp"
+                    android:text="@string/don_t_have_an_account_press"
+                    android:textColor="@color/colorWhite" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/here"
+                    android:textColor="@color/colorRedLight" />
+
+            </LinearLayout>
+        </FrameLayout>
+
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

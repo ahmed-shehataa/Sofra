@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:contentView="@+id/content"
+    app:leftMenuView="@+id/left">
+
+    <LinearLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dim_12dp"
+        android:layout_marginEnd="@dimen/dim_12dp"
+        android:layout_marginBottom="@dimen/dim_12dp"
+        android:foreground="?selectableItemBackground"
+        android:orientation="horizontal"
+        android:padding="@dimen/dim_4dp">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/offer_image"
+            android:layout_width="@dimen/dim_80"
+            android:layout_height="@dimen/dim_80"
+            android:layout_gravity="start"
+            android:padding="@dimen/dim_4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:elevation="1dp"
+            tools:src="@drawable/pic" />
+
+
+        <TextView
+            android:layout_marginStart="-30dp"
+            android:id="@+id/offer_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/edit_text_background_gray"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/txt_15sp"
+            android:textStyle="bold"
+            tools:text="Pizza"
+            android:textAlignment="viewStart"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/dim_40dp"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/left"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dim_80"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/dim_4dp"
+        android:paddingEnd="@dimen/dim_12dp">
+
+        <ImageView
+            android:id="@+id/offer_update"
+            android:layout_width="@dimen/dim_20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="@dimen/dim_12dp"
+            android:src="@drawable/ic_edit_solid"
+            android:tint="@color/colorAccent" />
+
+        <ImageView
+            android:id="@+id/offer_delete"
+            android:layout_width="@dimen/dim_20dp"
+            android:layout_height="@dimen/dim_20dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_trash_solid"
+            android:tint="@color/colorRedLight" />
+
+
+    </LinearLayout>
+
+
+</com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:shimmer="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/food_item_fragment_tv_title"
+            android:padding="@dimen/dim_4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="@string/my_categories"
+            android:textColor="@color/colorRedLight"
+            android:textSize="@dimen/txt_16sp" />
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_view_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            app:shimmer_duration="1200"
+            app:shimmer_auto_start="true"
+            >
+            <!-- Adding 3 rows of placeholders -->
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/recipe_placeholder_item" />
+                    <include layout="@layout/recipe_placeholder_item" />
+                    <include layout="@layout/recipe_placeholder_item" />
+                    <include layout="@layout/recipe_placeholder_item" />
+                    <include layout="@layout/recipe_placeholder_item" />
+                    <include layout="@layout/recipe_placeholder_item" />
+
+                </LinearLayout>
+            </ScrollView>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/food_item_fragment_rv_my_food_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/food_item_fragment_btn_add_food_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/dim_12dp"
+        android:layout_marginBottom="@dimen/dim_12dp"
+        android:backgroundTint="@color/colorWhite"
+        android:src="@drawable/ic_plus_solid" />
+
+
+</RelativeLayout>

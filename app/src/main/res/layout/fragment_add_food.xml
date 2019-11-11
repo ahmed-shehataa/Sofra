@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/add_food_fragment_tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/dim_12dp"
+            android:text="@string/add_food_picture"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/txt_16sp"
+            android:textStyle="bold" />
+
+
+        <ImageView
+            android:id="@+id/add_food_fragment_iv_photo"
+            android:layout_width="@dimen/album_dp_100"
+            android:layout_height="@dimen/album_dp_100"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/dim_12dp"
+            android:src="@drawable/fake_pic" />
+
+        <EditText
+            android:id="@+id/add_food_fragment_et_product_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dim_20dp"
+            android:layout_marginEnd="@dimen/dim_20dp"
+            android:layout_marginBottom="@dimen/dim_12dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="@string/product_name"
+            android:inputType="text"
+            android:padding="@dimen/dim_4dp"
+            android:textColorHint="@color/gray"
+            android:textSize="@dimen/txt_15sp" />
+
+
+        <EditText
+            android:id="@+id/add_food_fragment_et_description"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dim_100dp"
+            android:layout_marginStart="@dimen/dim_20dp"
+            android:layout_marginEnd="@dimen/dim_20dp"
+            android:layout_marginBottom="@dimen/dim_12dp"
+            android:background="@drawable/edit_text_background"
+            android:gravity="top"
+            android:hint="@string/small_description"
+            android:inputType="textMultiLine"
+            android:padding="@dimen/dim_4dp"
+            android:textColorHint="@color/gray"
+            android:textSize="@dimen/txt_15sp" />
+
+
+        <EditText
+            android:id="@+id/add_food_fragment_et_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dim_20dp"
+            android:layout_marginEnd="@dimen/dim_20dp"
+            android:layout_marginBottom="@dimen/dim_12dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="@string/price"
+            android:inputType="number"
+            android:padding="@dimen/dim_4dp"
+            android:textColorHint="@color/gray"
+            android:textSize="@dimen/txt_15sp" />
+
+
+        <EditText
+            android:id="@+id/add_food_fragment_et_price_in_sale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dim_20dp"
+            android:layout_marginEnd="@dimen/dim_20dp"
+            android:layout_marginBottom="@dimen/dim_12dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="@string/price_in_sale"
+            android:inputType="number"
+            android:padding="@dimen/dim_4dp"
+            android:textColorHint="@color/gray"
+            android:textSize="@dimen/txt_15sp" />
+
+
+        <Button
+            android:id="@+id/add_food_fragment_btn_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/group"
+            android:layout_marginStart="@dimen/dim_80"
+            android:layout_marginTop="@dimen/dim_16dp"
+            android:layout_marginEnd="@dimen/dim_80"
+            android:layout_marginBottom="@dimen/dim_8dp"
+            android:background="@drawable/button_backgrond_red_redius"
+            android:backgroundTint="@color/colorRedLight"
+            android:text="@string/add"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/txt_16sp" />
+
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/auth">
+    <LinearLayout
+        android:padding="@dimen/dim_40dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/loginbackground">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_marginBottom="@dimen/dim_16dp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/communication_data"
+                android:textSize="@dimen/txt_16sp"
+                android:textColor="@color/colorWhiteLight"
+                />
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/TextInputLayout"
+                app:hintEnabled="true"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/register_data_fragment_et_phone"
+                    android:hint="@string/phone"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:drawableStart="@drawable/ic_phone"
+                    style="@style/ETTheme"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                app:hintEnabled="true"
+                android:textColorHint="@color/colorWhiteLight"
+                style="@style/TextInputLayout"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/register_data_fragment_et_whats_app"
+                    android:hint="@string/whats_app"
+                    android:inputType="number"
+                    android:drawableStart="@drawable/ic_whatsapp"
+                    style="@style/ETTheme"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_marginBottom="@dimen/dim_8dp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/store_pic"
+                android:textSize="@dimen/txt_16sp"
+                android:textColor="@color/colorWhiteLight"
+                />
+            <FrameLayout
+                android:id="@+id/register_data_fragment_fl_pic"
+                android:layout_marginTop="@dimen/dim_8dp"
+                android:padding="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_shap"
+                >
+                <ImageView
+                    android:id="@+id/register_data_fragment_iv_photo"
+                    android:layout_width="@dimen/dim_40dp"
+                    android:layout_height="@dimen/dim_40dp"
+                    android:src="@drawable/ic_store"/>
+
+
+            </FrameLayout>
+        </LinearLayout>
+        <Button
+            android:layout_gravity="center"
+            android:drawablePadding="@dimen/dim_8dp"
+            android:drawableStart="@drawable/ic_login"
+            android:id="@+id/register_data_fragment_btn_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dim_16dp"
+            android:paddingStart="@dimen/dim_60dp"
+            android:paddingEnd="@dimen/dim_60dp"
+            android:background="@drawable/button_backgrond_red_redius"
+            android:textColor="@color/colorWhite"
+            android:text="@string/register"
+            android:textSize="@dimen/txt_16sp" />
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

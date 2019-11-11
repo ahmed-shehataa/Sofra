@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/profile_send_fragment_ll_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/dim_12dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:drawableStart="@drawable/ic_flag"
+            android:drawableTint="@color/colorBlack"
+            android:drawablePadding="@dimen/dim_4dp"
+            android:id="@+id/profile_send_fragment_et_min_order"
+            android:hint="@string/cost"
+            android:inputType="number"
+            style="@style/ETChangePassword"
+
+            />
+        <EditText
+            android:drawableStart="@drawable/ic_clock"
+            android:drawableTint="@color/colorBlack"
+            android:drawablePadding="@dimen/dim_4dp"
+            android:id="@+id/profile_send_fragment_et_deliver_time"
+            android:hint="@string/deliver_time"
+            android:inputType="number"
+            style="@style/ETChangePassword"
+            />
+
+        <Switch
+            android:id="@+id/profile_send_fragment_sw_status"
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:layout_gravity="start"
+            android:layout_marginStart="@dimen/dim_20dp"
+            android:layout_marginEnd="@dimen/dim_20dp"
+            android:layout_marginBottom="@dimen/dim_8dp"
+            android:checked="true"
+
+            android:switchPadding="@dimen/dim_8dp"
+            android:text="@string/status"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/txt_15sp"
+            android:thumbTint="@color/colorRedLight"
+             />
+
+        <EditText
+            android:drawableStart="@drawable/ic_phone"
+            android:drawableTint="@color/colorBlack"
+            android:drawablePadding="@dimen/dim_4dp"
+            android:id="@+id/profile_send_fragment_et_phone"
+            android:hint="@string/phone"
+            android:inputType="number"
+            style="@style/ETChangePassword"
+            />
+
+        <EditText
+            android:drawableStart="@drawable/ic_whatsapp"
+            android:drawableTint="@color/colorBlack"
+            android:drawablePadding="@dimen/dim_4dp"
+            android:id="@+id/profile_send_fragment_et_whatsapp"
+            android:hint="@string/whats_app"
+            android:inputType="number"
+            style="@style/ETChangePassword"
+            />
+
+        <Button
+            android:id="@+id/profile_send_fragment_btn_update"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/group"
+            android:layout_marginStart="@dimen/dim_80"
+            android:layout_marginTop="@dimen/dim_8dp"
+            android:layout_marginEnd="@dimen/dim_80"
+            android:layout_marginBottom="@dimen/dim_8dp"
+            android:background="@drawable/button_backgrond_red_redius"
+            android:backgroundTint="@color/colorRedLight"
+            android:text="@string/update"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/txt_16sp" />
+
+    </LinearLayout>
+</ScrollView>

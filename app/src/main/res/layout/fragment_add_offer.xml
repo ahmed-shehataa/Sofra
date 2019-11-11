@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/add_offer_fragment_tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/dim_12dp"
+            android:text="@string/add_offer_picture"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/txt_16sp"
+            android:textStyle="bold" />
+
+
+        <ImageView
+            android:id="@+id/add_offer_fragment_iv_photo"
+            android:layout_width="@dimen/album_dp_100"
+            android:layout_height="@dimen/album_dp_100"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/dim_12dp"
+            android:src="@drawable/fake_pic" />
+
+        <EditText
+            android:id="@+id/add_offer_fragment_et_offer_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dim_20dp"
+            android:layout_marginEnd="@dimen/dim_20dp"
+            android:layout_marginBottom="@dimen/dim_12dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="@string/offer_name"
+            android:inputType="text"
+            android:padding="@dimen/dim_4dp"
+            android:textColorHint="@color/gray"
+            android:textSize="@dimen/txt_15sp" />
+
+        <EditText
+            android:id="@+id/add_offer_fragment_et_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dim_20dp"
+            android:layout_marginEnd="@dimen/dim_20dp"
+            android:layout_marginBottom="@dimen/dim_12dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="@string/price"
+            android:inputType="number"
+            android:padding="@dimen/dim_4dp"
+            android:textColorHint="@color/gray"
+            android:textSize="@dimen/txt_15sp" />
+
+        <EditText
+            android:id="@+id/add_offer_fragment_et_offer_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dim_20dp"
+            android:layout_marginEnd="@dimen/dim_20dp"
+            android:layout_marginBottom="@dimen/dim_12dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="@string/price_in_sale"
+            android:inputType="number"
+            android:padding="@dimen/dim_4dp"
+            android:textColorHint="@color/gray"
+            android:textSize="@dimen/txt_15sp" />
+
+
+        <EditText
+            android:id="@+id/add_offer_fragment_et_offer_description"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dim_50dp"
+            android:layout_marginStart="@dimen/dim_20dp"
+            android:layout_marginEnd="@dimen/dim_20dp"
+            android:layout_marginBottom="@dimen/dim_12dp"
+            android:background="@drawable/edit_text_background"
+            android:gravity="top"
+            android:hint="@string/small_description"
+            android:inputType="textMultiLine"
+            android:padding="@dimen/dim_4dp"
+            android:textColorHint="@color/gray"
+            android:textSize="@dimen/txt_15sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dim_40dp"
+            android:layout_marginEnd="@dimen/dim_40dp"
+            android:orientation="horizontal"
+            android:padding="@dimen/dim_4dp">
+
+            <LinearLayout
+                android:id="@+id/add_offer_fragment_ll_from"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginEnd="@dimen/dim_12dp"
+                android:layout_weight="1"
+                android:background="@drawable/edit_text_background_gray"
+                android:orientation="horizontal"
+                android:padding="@dimen/dim_8dp">
+
+                <TextView
+                    android:id="@+id/txt_from"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="@dimen/dim_4dp"
+                    android:layout_weight="1"
+                    android:gravity="center|start"
+                    android:text="@string/from"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/album_sp_14" />
+
+                <ImageView
+                    android:layout_width="@dimen/album_dp_30"
+                    android:layout_height="@dimen/dim_25dp"
+                    android:src="@drawable/ic_calendar_alt_regular" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/add_offer_fragment_ll_to"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_weight="1"
+                android:background="@drawable/edit_text_background_gray"
+                android:orientation="horizontal"
+                android:padding="@dimen/dim_8dp">
+
+                <TextView
+                    android:id="@+id/txt_to"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="@dimen/dim_4dp"
+                    android:layout_weight="1"
+                    android:gravity="center|start"
+                    android:text="@string/to"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/album_sp_14"
+
+                    />
+
+                <ImageView
+                    android:layout_width="@dimen/album_dp_30"
+                    android:layout_height="@dimen/dim_25dp"
+                    android:src="@drawable/ic_calendar_alt_regular" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/add_offer_fragment_btn_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/group"
+            android:layout_marginStart="@dimen/dim_80"
+            android:layout_marginTop="@dimen/dim_16dp"
+            android:layout_marginEnd="@dimen/dim_80"
+            android:layout_marginBottom="@dimen/dim_8dp"
+            android:background="@drawable/button_backgrond_red_redius"
+            android:backgroundTint="@color/colorRedLight"
+            android:text="@string/add"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/txt_16sp" />
+
+    </LinearLayout>
+</ScrollView>

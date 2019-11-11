@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    >
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/more"
+        android:textSize="@dimen/txt_16sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="@dimen/dim_12dp"
+        />
+
+
+    <TextView
+        android:id="@+id/more_fragment_tv_offers"
+        style="@style/TVmore"
+        android:drawableStart="@drawable/ic_gift_solid"
+        android:drawableTint="@color/colorBlack"
+        android:text="@string/my_offers"
+        />
+
+    <View
+        style="@style/LineTheme"/>
+
+    <TextView
+        android:drawableStart="@drawable/ic_mail"
+        android:drawableTint="@color/colorBlack"
+        style="@style/TVmore"
+        android:text="@string/contact_us"
+        />
+
+    <View
+        style="@style/LineTheme"/>
+    <TextView
+        style="@style/TVmore"
+        android:drawableStart="@drawable/ic_lightbulb_regular"
+        android:drawableTint="@color/colorBlack"
+        android:text="@string/about_application"
+        />
+
+    <View
+        style="@style/LineTheme"/>
+
+    <TextView
+        style="@style/TVmore"
+        android:drawableStart="@drawable/ic_star_solid"
+        android:drawableTint="@color/colorBlack"
+        android:text="@string/comments_and_rates"
+
+        />
+
+    <View
+        style="@style/LineTheme"/>
+    <TextView
+        android:id="@+id/more_fragment_tv_change_password"
+        style="@style/TVmore"
+        android:drawableStart="@drawable/ic_lock_black"
+        android:drawableTint="@color/colorBlack"
+        android:text="@string/change_password"
+
+        />
+
+    <View
+        style="@style/LineTheme"/>
+    <TextView
+        android:id="@+id/more_fragment_tv_sign_out"
+        style="@style/TVmore"
+        android:drawableStart="@drawable/ic_login"
+        android:drawableTint="@color/colorBlack"
+        android:text="@string/log_out"
+        />
+
+
+
+</LinearLayout>
+</ScrollView>

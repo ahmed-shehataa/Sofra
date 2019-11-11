@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash"
+    tools:context=".ui.activity.SplashActivity">
+
+    <Button
+        android:textSize="@dimen/txt_16sp"
+        android:id="@+id/splash_activity_btn_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="@dimen/dim_40dp"
+        android:layout_marginEnd="@dimen/dim_40dp"
+        android:background="@drawable/button_backgrond_red_redius"
+        android:text="@string/order_food"
+        android:textColor="@color/colorWhite" />
+
+    <Button
+        android:id="@+id/splash_activity_btn_sale"
+        android:textSize="@dimen/txt_16sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dim_40dp"
+        android:layout_marginEnd="@dimen/dim_40dp"
+        android:background="@drawable/button_backgrond_red_redius"
+        android:text="@string/sale_food"
+        android:textColor="@color/colorWhite"
+        android:layout_below="@id/splash_activity_btn_order"
+        android:layout_marginTop="@dimen/dim_8dp"
+        />
+
+    <ImageView
+        android:id="@+id/splash_activity_iv_logo"
+        android:layout_width="@dimen/dim_200dp"
+        android:layout_height="@dimen/dim_200dp"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/splash_activity_btn_order"
+        android:src="@mipmap/logo"
+        android:layout_marginBottom="@dimen/dim_16dp"/>
+
+</RelativeLayout>

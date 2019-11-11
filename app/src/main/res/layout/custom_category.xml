@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:contentView="@+id/content"
+    app:leftMenuView="@+id/left"
+    >
+
+<LinearLayout
+    android:foreground="?selectableItemBackground"
+    android:id="@+id/content"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:padding="@dimen/dim_4dp"
+    android:layout_marginBottom="@dimen/dim_12dp"
+    android:layout_marginStart="@dimen/dim_12dp"
+    android:layout_marginEnd="@dimen/dim_12dp"
+    android:background="@drawable/edit_text_background"
+    android:layout_height="wrap_content">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/category_image"
+        android:layout_gravity="start"
+        tools:src="@drawable/pic"
+        android:padding="@dimen/dim_4dp"
+        android:layout_width="@dimen/dim_80"
+        android:layout_height="@dimen/dim_80"
+        />
+    <TextView
+        android:textStyle="bold"
+        android:id="@+id/category_name"
+        android:layout_marginStart="@dimen/dim_12dp"
+        android:layout_gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/txt_15sp"
+        tools:text="Pizza"
+        android:textColor="@color/colorBlack"/>
+
+</LinearLayout>
+
+
+    <LinearLayout
+        android:padding="@dimen/dim_4dp"
+        android:paddingEnd="@dimen/dim_12dp"
+        android:gravity="center_vertical"
+        android:id="@+id/left"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dim_80">
+
+        <ImageView
+            android:layout_marginEnd="@dimen/dim_12dp"
+            android:tint="@color/colorAccent"
+            android:layout_gravity="center"
+            android:id="@+id/category_update"
+            android:layout_width="@dimen/dim_20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_edit_solid"/>
+
+        <ImageView
+            android:tint="@color/colorRedLight"
+            android:id="@+id/category_delete"
+            android:layout_width="@dimen/dim_20dp"
+            android:layout_height="@dimen/dim_20dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_trash_solid" />
+
+
+    </LinearLayout>
+
+
+</com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout>

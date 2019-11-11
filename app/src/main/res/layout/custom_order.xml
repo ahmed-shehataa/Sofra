@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/edit_text_background_gray"
+    android:orientation="vertical"
+    android:layout_marginStart="@dimen/dim_12dp"
+    android:layout_marginEnd="@dimen/dim_12dp"
+    android:layout_marginBottom="@dimen/dim_12dp"
+
+
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/order_image"
+            android:layout_width="@dimen/dim_80"
+            android:layout_height="@dimen/dim_80"
+            android:layout_marginStart="@dimen/dim_4dp"
+            android:layout_marginEnd="@dimen/dim_4dp"
+            android:src="@drawable/fake_pic" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dim_4dp"
+            android:layout_marginBottom="@dimen/dim_4dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/client_name"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/txt_15sp" />
+
+                <TextView
+                    android:id="@+id/order_client_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/txt_15sp"
+                    tools:text="Ahmed Shehata" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/order_number"
+                    android:textColor="@color/colorRedLight"
+                    android:textSize="@dimen/album_sp_14" />
+
+                <TextView
+                    android:id="@+id/order_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorRedLight"
+                    android:textSize="@dimen/album_sp_14"
+                    tools:text="Ahmed Shehata" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/total"
+                    android:textColor="@color/colorRedLight"
+                    android:textSize="@dimen/album_sp_14" />
+
+                <TextView
+                    android:id="@+id/order_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/colorRedLight"
+                    android:textSize="@dimen/album_sp_14"
+                    tools:text="Ahmed Shehata" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/address"
+                    android:textColor="@color/colorRedLight"
+                    android:textSize="@dimen/album_sp_14" />
+
+                <TextView
+                    android:id="@+id/order_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorRedLight"
+                    android:textSize="@dimen/album_sp_14"
+                    tools:text="Ahmed Shehata" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="@dimen/dim_4dp"
+        android:orientation="horizontal"
+        android:padding="@dimen/dim_4dp">
+
+        <Button
+            android:id="@+id/order_btn_call"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dim_4dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_backgrond_red_redius"
+            android:backgroundTint="@color/colorRedLight"
+            android:text="@string/call"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/album_sp_14" />
+
+        <Button
+            android:id="@+id/order_btn_accept"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dim_4dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_backgrond_red_redius"
+            android:backgroundTint="@color/colorAccent"
+            android:text="@string/accept"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/album_sp_14" />
+
+        <Button
+            android:id="@+id/order_btn_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_backgrond_red_redius"
+            android:backgroundTint="@color/colorBlack"
+            android:text="@string/cancel"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/album_sp_14" />
+
+    </LinearLayout>
+
+</LinearLayout>

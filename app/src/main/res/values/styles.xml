@@ -1,0 +1,86 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorRedLight</item>
+        <item name="android:fontFamily">@font/cairo_regular</item>
+        <item name="colorControlNormal">@color/colorWhite</item>
+        <item name="colorControlActivated">@color/colorWhite</item>
+
+    </style>
+    <style name="mySpinnerItemStyle" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
+        <item name="android:textColor">@color/colorBlack</item>
+
+    </style>
+
+
+    <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/colorRedLight</item>
+        <item name="android:textColor">@color/colorBlack</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="ETTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorWhiteLight</item>
+        <item name="android:textColorHint">@color/colorWhiteLight</item>
+        <item name="android:drawablePadding">@dimen/dim_8dp</item>
+        <item name="android:textSize">@dimen/txt_15sp</item>
+
+
+    </style>
+
+    <style name="LineTheme">
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:background">@color/gray</item>
+    </style>
+
+    <style name="TextInputLayout">
+        <item name="android:layout_marginBottom">@dimen/dim_4dp</item>
+        <item name="android:textColorHint">@color/colorWhiteLight</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+
+
+    </style>
+
+    <style name="TVmore">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/txt_15sp</item>
+        <item name="android:padding">@dimen/dim_8dp</item>
+        <item name="android:drawablePadding">@dimen/dim_12dp</item>
+        <item name="android:foreground">?selectableItemBackground</item>
+    </style>
+
+
+    <style name="ETChangePassword">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dim_50dp</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="android:textColorHint">@color/colorBlack</item>
+        <item name="android:background">@drawable/edit_text_background_gray</item>
+        <item name="android:padding">@dimen/dim_8dp</item>
+        <item name="android:textSize">@dimen/txt_15sp</item>
+        <item name="android:layout_marginStart">@dimen/dim_20dp</item>
+        <item name="android:layout_marginEnd">@dimen/dim_20dp</item>
+        <item name="android:layout_marginBottom">@dimen/dim_8dp</item>
+        <item name="android:inputType">numberPassword</item>
+        <item name="android:textAlignment">viewStart</item>
+
+    </style>
+
+
+
+
+
+</resources>

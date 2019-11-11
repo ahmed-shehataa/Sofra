@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/edit_text_background"
+    android:focusable="true"
+    android:layout_margin="@dimen/dim_20dp"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    android:padding="@dimen/dim_20dp">
+
+    <TextView
+        android:id="@+id/dialog_category_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dim_12dp"
+        android:gravity="center"
+        android:padding="@dimen/dim_12dp"
+        android:text="@string/category_pic"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/dim_16dp"
+        android:textStyle="bold" />
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/dim_16dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/dialog_category_image"
+            android:layout_width="@dimen/dim_80"
+            android:layout_height="@dimen/dim_80"
+            android:layout_centerInParent="true"
+            android:backgroundTint="@color/colorWhite"
+            android:src="@color/colorWhite" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="@dimen/dim_20dp"
+            android:layout_height="@dimen/dim_20dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_plus_solid" />
+
+
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/dialog_category_name"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginStart="@dimen/dim_20dp"
+        android:layout_marginEnd="@dimen/dim_20dp"
+        android:background="@drawable/edit_text_background"
+        android:hint="@string/category_name"
+        android:inputType="text"
+        android:padding="@dimen/dim_4dp"
+        android:textColorHint="@color/gray"
+        android:textSize="14sp" />
+
+
+    <Button
+        android:id="@+id/dialog_category_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/group"
+        android:layout_marginStart="@dimen/dim_80"
+        android:layout_marginTop="@dimen/dim_16dp"
+        android:layout_marginEnd="@dimen/dim_80"
+        android:background="@drawable/button_backgrond_red_redius"
+        android:backgroundTint="@color/colorRedLight"
+        android:text="@string/add"
+        android:textColor="@color/colorWhite"
+        android:textSize="14sp" />
+
+
+</LinearLayout>

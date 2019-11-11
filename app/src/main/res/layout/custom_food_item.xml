@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:contentView="@+id/content"
+    app:leftMenuView="@+id/left"
+    >
+
+<LinearLayout
+    android:id="@+id/content"
+    android:orientation="horizontal"
+    android:padding="@dimen/dim_4dp"
+    android:layout_marginBottom="@dimen/dim_12dp"
+    android:layout_marginStart="@dimen/dim_12dp"
+    android:layout_marginEnd="@dimen/dim_12dp"    android:background="@drawable/edit_text_background"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/food_item_image"
+        android:padding="@dimen/dim_4dp"
+        android:layout_width="@dimen/dim_80"
+        android:layout_height="@dimen/dim_80"
+        tools:src="@drawable/pic"
+        />
+
+    <LinearLayout
+        android:layout_gravity="center"
+        android:padding="@dimen/dim_12dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/food_item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="تشيكن فرايز محمرة"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/txt_15sp"
+            android:textStyle="bold"
+
+            />
+
+        <TextView
+            android:id="@+id/food_item_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/album_sp_14"
+            android:text="سندوتش راب تشكن"
+
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginEnd="@dimen/dim_8dp"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/price"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/album_sp_14"
+            android:textStyle="bold"
+
+            />
+
+        <TextView
+            android:id="@+id/food_item_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/album_sp_14"
+            android:text="20 ريال"
+
+            />
+
+    </LinearLayout>
+
+</LinearLayout>
+
+    <LinearLayout
+        android:padding="@dimen/dim_4dp"
+        android:paddingEnd="@dimen/dim_12dp"
+        android:gravity="center_vertical"
+        android:id="@+id/left"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dim_80">
+
+        <ImageView
+            android:layout_marginEnd="@dimen/dim_12dp"
+            android:tint="@color/colorAccent"
+            android:layout_gravity="center"
+            android:id="@+id/food_item_update"
+            android:layout_width="@dimen/dim_20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_edit_solid"/>
+
+        <ImageView
+            android:tint="@color/colorRedLight"
+            android:id="@+id/food_item_delete"
+            android:layout_width="@dimen/dim_20dp"
+            android:layout_height="@dimen/dim_20dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_trash_solid" />
+
+
+    </LinearLayout>
+
+</com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout>

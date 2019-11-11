@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/auth"
+    android:layout_height="wrap_content">
+
+    <ScrollView
+        android:background="@drawable/loginbackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="false">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+                <LinearLayout
+                    android:paddingTop="@dimen/dim_20dp"
+                    android:paddingStart="@dimen/dim_40dp"
+                    android:paddingEnd="@dimen/dim_40dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+                    <com.google.android.material.textfield.TextInputLayout
+                        app:hintEnabled="true"
+                        style="@style/TextInputLayout"
+                        >
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/register_fragment_et_restaurant_name"
+                            android:hint="@string/restaurant_name"
+                            android:inputType="textAutoComplete"
+                            android:singleLine="true"
+                            android:drawableStart="@drawable/ic_user"
+                            style="@style/ETTheme"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        app:hintEnabled="true"
+                        style="@style/TextInputLayout"
+
+                        >
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/register_fragment_et_email"
+                            android:hint="@string/email"
+                            android:inputType="textEmailAddress"
+                            android:drawableStart="@drawable/ic_mail"
+                            style="@style/ETTheme"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        app:hintEnabled="true"
+                        style="@style/TextInputLayout"
+                        >
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/register_fragment_et_deliver_time"
+                            android:hint="@string/deliver_time"
+                            android:inputType="number"
+                            android:drawableStart="@drawable/ic_clock"
+                            style="@style/ETTheme"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <Spinner
+                        android:layout_marginBottom="@dimen/dim_8dp"
+                        android:theme="@style/mySpinnerItemStyle"
+                        android:id="@+id/register_fragment_sp_city"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="viewStart"
+                        >
+
+                    </Spinner>
+
+
+                    <Spinner
+                        android:layout_marginBottom="@dimen/dim_8dp"
+                        android:theme="@style/mySpinnerItemStyle"
+                        android:id="@+id/register_fragment_sp_quarter"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="viewStart"
+                        >
+
+                    </Spinner>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        app:hintEnabled="true"
+                        app:passwordToggleEnabled="true"
+                        app:passwordToggleTint="@color/colorWhite"
+                        style="@style/TextInputLayout">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/register_fragment_et_password"
+                            android:hint="@string/password"
+                            android:inputType="numberPassword"
+                            android:drawableStart="@drawable/ic_lock"
+                            style="@style/ETTheme"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/TextInputLayout"
+                        app:hintEnabled="true"
+                        app:passwordToggleEnabled="true"
+                        app:passwordToggleTint="@color/colorWhite"
+                        >
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/register_fragment_et_password_confirm"
+                            android:hint="@string/password_confirm"
+                            android:inputType="numberPassword"
+                            android:drawableStart="@drawable/ic_lock"
+                            style="@style/ETTheme"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/TextInputLayout"
+                        app:hintEnabled="true"
+                        >
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/register_fragment_et_min_order"
+                            android:hint="@string/min_order"
+                            android:inputType="number"
+                            android:drawableStart="@drawable/ic_flag"
+                            style="@style/ETTheme"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/TextInputLayout"
+                        app:hintEnabled="true"
+                        >
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/register_fragment_et_delver_cost"
+                            android:hint="@string/cost"
+                            android:inputType="number"
+                            android:drawableStart="@drawable/ic_flag"
+                            style="@style/ETTheme"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                </LinearLayout>
+                <Button
+                    android:id="@+id/register_fragment_btn_go_on"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dim_16dp"
+                    android:layout_marginStart="@dimen/dim_80"
+                    android:layout_marginEnd="@dimen/dim_80"
+                    android:background="@drawable/button_backgrond_red_redius"
+                    android:textColor="@color/colorWhite"
+                    android:text="@string/go_on"
+                    android:textSize="@dimen/txt_16sp"
+                    android:layout_marginBottom="@dimen/dim_8dp"
+                    />
+            </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
