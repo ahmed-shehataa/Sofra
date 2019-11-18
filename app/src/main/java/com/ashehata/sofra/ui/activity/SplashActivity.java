@@ -11,12 +11,13 @@ import android.widget.ImageView;
 
 import com.ashehata.sofra.R;
 import com.ashehata.sofra.data.local.shared.SharedPreferencesManger;
-import com.ashehata.sofra.helper.HelperMethod;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static com.ashehata.sofra.data.local.shared.SharedPreferencesManger.TYPE_CLIENT;
+import static com.ashehata.sofra.data.local.shared.SharedPreferencesManger.TYPE_RESTAURANT;
 import static com.ashehata.sofra.helper.HelperMethod.changeLang;
 
 public class SplashActivity extends BaseActivity {
@@ -30,6 +31,7 @@ public class SplashActivity extends BaseActivity {
     @BindView(R.id.splash_activity_btn_sale)
     Button splashActivityBtnSale;
     private boolean b;
+    public String userType = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +67,7 @@ public class SplashActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.splash_activity_btn_order:
+                clientCycle();
                 break;
             case R.id.splash_activity_btn_sale:
                 restaurantCycle();
@@ -72,7 +75,15 @@ public class SplashActivity extends BaseActivity {
         }
     }
 
+    private void clientCycle() {
+//        SharedPreferencesManger.SaveUserType(this,TYPE_CLIENT);
+        userType = TYPE_CLIENT ;
+        startNewActivity(HomeActivity.class);
+    }
+
     private void restaurantCycle() {
+//        SharedPreferencesManger.SaveUserType(this,TYPE_RESTAURANT);
+        userType = TYPE_RESTAURANT ;
         b = SharedPreferencesManger.LoadBoolean(this,SharedPreferencesManger.REMEMBER_RESTAURANT);
        if(b){
            startNewActivity(HomeActivity.class);
@@ -82,7 +93,7 @@ public class SplashActivity extends BaseActivity {
        }
     }
     private void startNewActivity(Class<?> activity){
-        startActivity(new Intent(this, activity));
+        startActivity(new Intent(this, activity).setType(userType));
         finish();
     }
 

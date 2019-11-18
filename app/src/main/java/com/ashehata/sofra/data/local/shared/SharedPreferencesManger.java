@@ -11,27 +11,15 @@ public class SharedPreferencesManger {
     private static SharedPreferences sharedPreferences = null;
     private static String RESTAURANT_USER_DATA = "USER_DATA";
     public static String USER_API_TOKEN = "USER_API_TOKEN";
-  /*
-    private static String USER_ID = "USER_ID";
-    private static String USER_EMAIL = "USER_EMAIL";
-    private static String USER_NAME = "USER_NAME";
-    private static String USER_BID = "USER_BID";
-    private static String USER_PHONE = "USER_PHONE";
-    private static String USER_DLD = "USER_DLD";
-    private static String USER_PIN_CODE = "USER_PIN_CODE";
-    private static String USER_CITY_ID = "USER_CITY_ID";
-    private static String USER_CITY_NAME = "USER_CITY_NAME";
-    private static String USER_GOVERMENT_NAME = "USER_GOVERMENT_NAME";
-    private static String USER_GOVERMENT_ID = "USER_GOVERMENT_ID";
-    private static String USER_BLOOD_TYPE_ID = "USER_BLOOD_TYPE_ID";
-    private static String USER_BLOOD_TYPE_NAME = "USER_BLOOD_TYPE_NAME";
 
-   */
   //nYntJTubK4ai27SkecCVpIICxAl2DfTgiGanCNXXBA1QdhQx3bFiuJpyDe7j
   //mine : Zc3CHfa2Slem4zXMzsP33HRN4k4bq0KAQROROhDUhLFiSbtWRVBcNLZcJJpo
     public static String USER_PASSWORD = "USER_PASSWORD";
-    public static String REMEMBER_RESTAURANT    = "REMEMBER_rest";
-    public static String REMEMBER_CLIENT    = "REMEMBER_client";
+    public static String REMEMBER_RESTAURANT  = "REMEMBER_rest";
+    public static String REMEMBER_CLIENT  = "REMEMBER_client";
+    private static String USER_TYPE  = "TYPE";
+    public static String TYPE_CLIENT = "CLIENT";
+    public static String TYPE_RESTAURANT = "RESTAURANT";
 
     /*
     public static String getReadyApiToken(){
@@ -43,7 +31,7 @@ public class SharedPreferencesManger {
     public static void setSharedPreferences(Activity activity) {
         if (sharedPreferences == null) {
             sharedPreferences = activity.getSharedPreferences(
-                    "Blood", activity.MODE_PRIVATE);
+                    "Sofra", activity.MODE_PRIVATE);
         }
     }
 
@@ -76,6 +64,7 @@ public class SharedPreferencesManger {
 
         return sharedPreferences.getString(data_Key, null);
     }
+
 
     public static boolean LoadBoolean(Activity activity, String data_Key) {
         if (sharedPreferences != null) {
@@ -118,6 +107,12 @@ public class SharedPreferencesManger {
             editor.clear();
             editor.commit();
         }
+    }
+    public static void SaveUserType(Activity activity,String user_type){
+        SaveData(activity,USER_TYPE,user_type);
+    }
+    public static String LoadUserType(Activity activity){
+        return LoadData(activity,USER_TYPE);
     }
 
 }

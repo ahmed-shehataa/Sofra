@@ -128,7 +128,6 @@ public class HelperMethod {
         Glide.with(context)
                 .load(URl)
                // .placeholder(R.drawable.loading_image)
-                .error(R.drawable.loading_image)
                 .into(circleImageView);
     }
     public static void onLoadImageFromUrl(ImageView imageView, String URl, Context context) {

@@ -37,7 +37,6 @@ import static com.ashehata.sofra.helper.HelperMethod.createToast;
 
 public class OfferFragment extends BaseFragment {
 
-
     @BindView(R.id.offer_fragment_tv_title)
     TextView offerFragmentTvTitle;
     @BindView(R.id.shimmer_view_container)
@@ -80,11 +79,9 @@ public class OfferFragment extends BaseFragment {
 
 
     private void setRecyclerConfig() {
-
         linearLayoutManager = new LinearLayoutManager(getContext());
         // Set items on linear manager
         offerFragmentRvMyOffer.setLayoutManager(linearLayoutManager);
-
         // Fixed size
         offerFragmentRvMyOffer.setHasFixedSize(true);
     }

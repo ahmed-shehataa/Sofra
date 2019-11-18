@@ -2,11 +2,13 @@ package com.ashehata.sofra.data.api;
 
 
 import com.ashehata.sofra.data.model.general.regions.Regions;
+import com.ashehata.sofra.data.model.general.restaurants.Restaurants;
 import com.ashehata.sofra.data.model.reataurant.GeneralResponse;
 import com.ashehata.sofra.data.model.reataurant.Categories.Categories;
 import com.ashehata.sofra.data.model.reataurant.foodItem.FoodItem;
 import com.ashehata.sofra.data.model.reataurant.offer.Offer;
 import com.ashehata.sofra.data.model.reataurant.order.Order;
+import com.ashehata.sofra.data.model.reataurant.restaurantCycle.Profile.User;
 import com.ashehata.sofra.data.model.reataurant.restaurantCycle.changeState.ChangeState;
 import com.ashehata.sofra.data.model.reataurant.restaurantCycle.Profile.Profile;
 
@@ -159,6 +161,11 @@ public interface GetDataService {
     Call<Order> getOrders(@Query("api_token") String apiToken ,
                           @Query("state") String state ,
                           @Query("page") int page );
+
+    @GET("restaurants")
+    Call<Restaurants> getRestaurants();
+
+
 
 
 
