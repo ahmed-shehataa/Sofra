@@ -118,8 +118,8 @@ public class CategoriesFragment extends BaseFragment {
                     // stop animating Shimmer and hide the layout
                     shimmerViewContainer.stopShimmer();
                     shimmerViewContainer.setVisibility(View.GONE);
-                    createToast(getContext(), getString(R.string.error)
-                            , Toast.LENGTH_SHORT);
+//                    createToast(getContext(), getString(R.string.error)
+//                            , Toast.LENGTH_SHORT);
                 }catch (Exception e){}
             }
         });

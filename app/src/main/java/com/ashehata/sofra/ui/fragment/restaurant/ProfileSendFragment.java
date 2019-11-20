@@ -209,7 +209,7 @@ public class ProfileSendFragment extends BaseFragment implements Switch.OnClickL
             @Override
             public void onFailure(Call<ChangeState> call, Throwable t) {
                 dismissProgressDialog();
-                createToast(getContext(),getString(R.string.error),Toast.LENGTH_SHORT);
+                //createToast(getContext(),getString(R.string.error),Toast.LENGTH_SHORT);
                 //set switch to default
                 profileSendFragmentSwStatus.setChecked(isActivated);
 

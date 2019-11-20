@@ -128,12 +128,12 @@ public class OrderNewFragment extends BaseFragment {
                 shimmerViewContainer.stopShimmer();
                 shimmerViewContainer.setVisibility(View.GONE);
                 orderNewFragmentPbIndicator.setVisibility(View.GONE);
-                try {
-                    createToast(getActivity(), getString(R.string.error)
-                            , Toast.LENGTH_SHORT);
-                }catch (Exception e){
-                    Log.v("catch error",e.getMessage());
-                }
+//                try {
+//                    createToast(getActivity(), getString(R.string.error)
+//                            , Toast.LENGTH_SHORT);
+//                }catch (Exception e){
+//                    Log.v("catch error",e.getMessage());
+//                }
 
             }
         });

@@ -119,13 +119,10 @@ public class OfferFragment extends BaseFragment {
                 shimmerViewContainer.stopShimmer();
                 shimmerViewContainer.setVisibility(View.GONE);
 
-                try {
-                    createToast(getContext(), getString(R.string.error)
-                            , Toast.LENGTH_SHORT);
+                //                    createToast(getContext(), getString(R.string.error)
+//                            , Toast.LENGTH_SHORT);
 
-                }catch (Exception e){
 
-                }
 
             }
         });

@@ -192,7 +192,7 @@ public class AddFoodFragment extends BaseFragment {
             @Override
             public void onFailure(Call<FoodItem> call, Throwable t) {
                 dismissProgressDialog();
-                createToast(getContext(), getString(R.string.error), Toast.LENGTH_SHORT);
+                //createToast(getContext(), getString(R.string.error), Toast.LENGTH_SHORT);
             }
         });
     }

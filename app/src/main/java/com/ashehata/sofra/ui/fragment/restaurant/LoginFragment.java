@@ -181,8 +181,8 @@ public class LoginFragment extends BaseFragment {
             @Override
             public void onFailure(Call<Profile> call, Throwable t) {
                 dismissProgressDialog();
-                createToast(getContext(), getString(R.string.error)
-                        , Toast.LENGTH_SHORT);
+//                createToast(getContext(), getString(R.string.error)
+//                        , Toast.LENGTH_SHORT);
             }
         });
 
