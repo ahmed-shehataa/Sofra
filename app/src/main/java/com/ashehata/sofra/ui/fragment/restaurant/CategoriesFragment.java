@@ -52,6 +52,7 @@ public class CategoriesFragment extends BaseFragment {
     private String apiToken;
     private CustomDialogCategory customDialogCategory;
     public CategoryAdapter categoryAdapter;
+    private Call<Categories> call;
 
 
     @Override
@@ -84,7 +85,8 @@ public class CategoriesFragment extends BaseFragment {
 
     public void getCategories() {
         apiToken = SharedPreferencesManger.LoadData(getActivity(),SharedPreferencesManger.USER_API_TOKEN);
-        getDataService.getCategories(apiToken).enqueue(new Callback<Categories>() {
+        call = getDataService.getCategories(apiToken) ;
+        call.enqueue(new Callback<Categories>() {
             @Override
             public void onResponse(Call<Categories> call, Response<Categories> response) {
                 // stop animating Shimmer and hide the layout
@@ -144,5 +146,13 @@ public class CategoriesFragment extends BaseFragment {
 
         customDialogCategory = new CustomDialogCategory(getActivity(),this);
         customDialogCategory.show();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(call !=null){
+            call.cancel();
+        }
     }
 }

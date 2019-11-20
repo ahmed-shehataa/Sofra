@@ -32,6 +32,7 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     // Returns the fragment to display for that page
     @Override
     public Fragment getItem(int position) {
+
         return fragments.get(position);
     }
 

@@ -30,4 +30,5 @@
     <dimen name="description">15dp</dimen>
     <dimen name="price">13dp</dimen>
     <dimen name="dim_25dp">25dp</dimen>
+    <dimen name="txt_12sp">12sp</dimen>
 </resources>

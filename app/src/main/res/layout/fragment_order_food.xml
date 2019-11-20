@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_marginStart="@dimen/dim_16dp"
+            android:layout_marginEnd="@dimen/dim_16dp"
+            android:layout_marginTop="@dimen/dim_8dp"
+            android:padding="@dimen/dim_4dp"
+            android:elevation="@dimen/album_dp_2"
+            android:background="@drawable/edit_text_background"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/offer_food_fragment_iv_image"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                tools:src="@drawable/fake_pic"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <LinearLayout
+                android:elevation="@dimen/album_dp_2"
+                android:padding="@dimen/dim_4dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/background_shap"
+                app:layout_constraintBottom_toBottomOf="@+id/offer_food_fragment_iv_image">
+
+                <TextView
+                    android:id="@+id/offer_food_fragment_tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/album_sp_14"
+                    android:textColor="@color/colorRedLight"
+                    android:layout_marginBottom="@dimen/dim_4dp"
+                    tools:text="@string/category_name" />
+
+                <TextView
+                    android:id="@+id/offer_food_fragment_tv_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/txt_12sp"
+                    android:textColor="@color/colorBlack"
+                    android:layout_marginBottom="@dimen/dim_4dp"
+                    tools:text="@string/small_description" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:gravity="center"
+                            android:layout_centerInParent="true"
+                            android:id="@+id/offer_food_fragment_tv_price"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:textSize="@dimen/album_sp_14"
+                            android:textColor="@color/colorBlack"
+                            android:layout_marginBottom="@dimen/dim_4dp"
+                            tools:text="@string/price" />
+
+                        <View
+                            android:visibility="gone"
+                            android:layout_gravity="center"
+                            android:id="@+id/offer_food_fragment_v_offer_line"
+                            android:background="@color/colorRedLight"
+                            android:layout_width="@dimen/album_dp_30"
+                            android:layout_height="@dimen/album_dp_2" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_marginStart="@dimen/dim_4dp"
+                        android:id="@+id/offer_food_fragment_tv_price_offer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/txt_16sp"
+                        android:textColor="@color/colorRedLight"
+                        android:layout_marginBottom="@dimen/dim_4dp"
+                        tools:text="@string/price" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_marginTop="@dimen/dim_4dp"
+            style="@style/LineTheme" />
+
+        <TextView
+            android:layout_marginTop="@dimen/dim_4dp"
+            android:layout_width="match_parent"
+            style="@style/TVmore"
+            android:layout_marginStart="@dimen/dim_20dp"
+            android:layout_marginEnd="@dimen/dim_20dp"
+            android:text="@string/special_order"
+            />
+        <EditText
+            android:layout_marginTop="@dimen/dim_4dp"
+            android:id="@+id/offer_food_fragment_et_special_offer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dim_20dp"
+            android:layout_marginEnd="@dimen/dim_20dp"
+            android:background="@drawable/edit_text_background"
+            android:gravity="top"
+            android:lines="2"
+            android:hint="@string/small_description"
+            android:inputType="textMultiLine"
+            android:padding="@dimen/dim_4dp"
+            android:textColorHint="@color/gray"
+            android:textSize="@dimen/txt_15sp" />
+
+
+        <View
+            android:layout_marginTop="@dimen/dim_4dp"
+            style="@style/LineTheme" />
+        <LinearLayout
+            android:layout_marginBottom="@dimen/dim_12dp"
+            android:gravity="center|start"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_marginTop="@dimen/dim_4dp"
+                android:layout_width="wrap_content"
+                style="@style/TVmore"
+                android:layout_marginStart="@dimen/dim_20dp"
+                android:layout_marginEnd="@dimen/dim_20dp"
+                android:text="@string/quantity"
+                />
+
+            <Button
+                android:foreground="?selectableItemBackground"
+                android:textStyle="bold"
+                android:id="@+id/offer_food_fragment_btn_increase"
+                android:layout_width="@dimen/dim_50dp"
+                android:layout_height="@dimen/dim_40dp"
+                android:background="@drawable/background_shap"
+                android:elevation="@dimen/album_dp_1"
+                android:text="+"
+                android:textColor="@color/colorBlack" />
+            <Button
+                android:textStyle="bold"
+                android:id="@+id/offer_food_fragment_btn_display_quantity"
+                android:text="1"
+                android:textColor="@color/colorBlack"
+                android:layout_marginStart="@dimen/dim_8dp"
+                android:elevation="@dimen/album_dp_1"
+                android:layout_width="@dimen/dim_80"
+                android:layout_height="@dimen/dim_40dp"
+                android:background="@drawable/background_shap"
+                android:layout_marginEnd="@dimen/dim_8dp"
+
+                />
+
+            <Button
+                android:foreground="?selectableItemBackground"
+                android:id="@+id/offer_food_fragment_btn_decrease"
+                android:layout_width="38dp"
+                android:layout_height="@dimen/dim_40dp"
+                android:background="@drawable/background_shap"
+                android:elevation="@dimen/album_dp_1"
+                android:text="-"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/offer_food_fragment_btn_confirm"
+            android:layout_width="@dimen/dim_40dp"
+            android:layout_height="@dimen/dim_40dp"
+            android:layout_gravity="center"
+            android:background="@drawable/background_shap"
+            android:backgroundTint="@color/colorRedLight"
+            android:elevation="@dimen/album_dp_1"
+            android:padding="@dimen/album_dp_6"
+            android:src="@drawable/ic_shopping_cart_solid"
+            android:tint="@color/colorWhite" />
+
+    </LinearLayout>
+</ScrollView>

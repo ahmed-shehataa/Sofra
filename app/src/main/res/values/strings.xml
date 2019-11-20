@@ -90,5 +90,12 @@
     <string name="accept">Accept</string>
     <string name="cancel">Cancel</string>
     <string name="call">Call</string>
+    <string name="your_favorite_restaurant">Your favorite restaurant</string>
+    <string name="opened">Opened</string>
+    <string name="food_list">Food list</string>
+    <string name="comments_ratings">Comments and ratings</string>
+    <string name="restaurant_info">Restaurant information</string>
+    <string name="special_order">Special order</string>
+    <string name="quantity">Quantity</string>
 
 </resources>

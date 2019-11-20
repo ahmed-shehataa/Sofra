@@ -41,7 +41,6 @@
             android:textColor="@color/colorBlack"
             android:textSize="@dimen/txt_15sp"
             android:textStyle="bold"
-
             />
 
         <TextView

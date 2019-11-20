@@ -38,7 +38,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/ic_bell"/>
+                        android:src="@drawable/ic_bell"/>
 
                 </FrameLayout>
                 <TextView
@@ -59,10 +59,12 @@
                     android:layout_height="wrap_content"
                     >
                     <ImageView
+                        android:id="@+id/home_activity_iv_ic_shopping"
                         android:layout_gravity="end"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/ic_calculator"/>
+                        android:layout_width="@dimen/album_dp_20"
+                        android:layout_height="@dimen/album_dp_20"
+                        android:tint="@color/colorRedLight"
+                        android:src="@drawable/ic_calculator"/>
 
                 </FrameLayout>
 

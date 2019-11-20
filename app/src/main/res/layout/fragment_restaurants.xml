@@ -3,14 +3,64 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     xmlns:shimmer="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <LinearLayout
+        android:layout_marginTop="@dimen/dim_12dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+        <LinearLayout
+            android:layout_marginStart="@dimen/dim_8dp"
+            android:layout_marginEnd="@dimen/dim_8dp"
+            android:layout_marginBottom="@dimen/dim_8dp"
+            android:background="@drawable/background_ll"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/album_dp_30">
 
+            <Spinner
+                android:id="@+id/posts_fragment_spin_categy"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+
+            <LinearLayout
+                android:layout_marginStart="@dimen/dim_4dp"
+                android:gravity="center"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/restaurants_fragment_et_filter_name"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/txt_12sp"
+                    android:hint="@string/your_favorite_restaurant"
+                    android:background="@color/gray"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textAutoComplete"/>
+
+                <ImageView
+                    android:id="@+id/restaurants_fragment_iv_make_filter"
+                    android:foreground="?selectableItemBackground"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="@dimen/album_dp_30"
+                    android:layout_height="@dimen/album_dp_30"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_search_solid"
+                    />
+
+            </LinearLayout>
+        </LinearLayout>
 
         <com.facebook.shimmer.ShimmerFrameLayout
             android:id="@+id/shimmer_view_container"

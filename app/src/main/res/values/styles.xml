@@ -54,12 +54,14 @@
     </style>
 
     <style name="TVmore">
+        <item name="android:textColor">@color/colorBlack</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">@dimen/txt_15sp</item>
         <item name="android:padding">@dimen/dim_8dp</item>
         <item name="android:drawablePadding">@dimen/dim_12dp</item>
         <item name="android:foreground">?selectableItemBackground</item>
+        <item name="android:textAlignment">viewStart</item>
     </style>
 
 

@@ -1,23 +1,23 @@
 package com.ashehata.sofra.ui.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.Toast;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 
 import com.ashehata.sofra.R;
 import com.ashehata.sofra.data.local.shared.SharedPreferencesManger;
 import com.ashehata.sofra.ui.fragment.client.RestaurantsFragment;
-import com.ashehata.sofra.ui.fragment.restaurant.MoreFragment;
 import com.ashehata.sofra.ui.fragment.restaurant.CategoriesFragment;
+import com.ashehata.sofra.ui.fragment.restaurant.MoreFragment;
 import com.ashehata.sofra.ui.fragment.restaurant.OrderFragment;
 import com.ashehata.sofra.ui.fragment.restaurant.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -30,15 +30,15 @@ import static com.ashehata.sofra.helper.HelperMethod.onPermission;
 public class HomeActivity extends BaseActivity {
 
     // Restaurant fragments
-    MoreFragment moreFragment ;
-    CategoriesFragment categoriesFragment ;
+    MoreFragment moreFragment;
+    CategoriesFragment categoriesFragment;
     ProfileFragment profileFragment;
     OrderFragment orderFragment;
     // Client fragments
-    RestaurantsFragment restaurantsFragment ;
+    RestaurantsFragment restaurantsFragment;
 
 
-    String userType = "" ;
+    String userType = "";
 
 
     BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -47,33 +47,33 @@ public class HomeActivity extends BaseActivity {
             int itemId = menuItem.getItemId();
             switch (itemId) {
                 case R.id.navigation_home:
-                    if (userType.equals(TYPE_RESTAURANT)){
-                        ReplaceFragment(getSupportFragmentManager(),categoriesFragment
-                                ,R.id.home_activity_fl_display,false);
+                    if (userType.equals(TYPE_RESTAURANT)) {
+                        ReplaceFragment(getSupportFragmentManager(), categoriesFragment
+                                , R.id.home_activity_fl_display, false);
                         //Log.v("user_type",TYPE_RESTAURANT);
 
-                    }else if (userType.equals(TYPE_CLIENT)){
-                        ReplaceFragment(getSupportFragmentManager(),restaurantsFragment
-                                ,R.id.home_activity_fl_display,false);
+                    } else if (userType.equals(TYPE_CLIENT)) {
+                        ReplaceFragment(getSupportFragmentManager(), restaurantsFragment
+                                , R.id.home_activity_fl_display, false);
                         //Log.v("user_type",TYPE_CLIENT);
                     }
                     break;
 
                 case R.id.navigation_clipboard:
-                    ReplaceFragment(getSupportFragmentManager(),orderFragment
-                            ,R.id.home_activity_fl_display,false);
+                    ReplaceFragment(getSupportFragmentManager(), orderFragment
+                            , R.id.home_activity_fl_display, false);
 
                     break;
 
                 case R.id.navigation_user:
-                    ReplaceFragment(getSupportFragmentManager(),profileFragment
-                            ,R.id.home_activity_fl_display,false);
+                    ReplaceFragment(getSupportFragmentManager(), profileFragment
+                            , R.id.home_activity_fl_display, false);
 
                     break;
 
                 case R.id.navigation_dots:
-                    ReplaceFragment(getSupportFragmentManager(),moreFragment
-                        ,R.id.home_activity_fl_display,false);
+                    ReplaceFragment(getSupportFragmentManager(), moreFragment
+                            , R.id.home_activity_fl_display, false);
                     break;
             }
             return true;
@@ -83,6 +83,8 @@ public class HomeActivity extends BaseActivity {
     FrameLayout homeActivityFlNotification;
     @BindView(R.id.home_activity_fl_calc)
     FrameLayout homeActivityFlCalc;
+    @BindView(R.id.home_activity_iv_ic_shopping)
+    ImageView homeActivityIvIcShopping;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +95,7 @@ public class HomeActivity extends BaseActivity {
         //get user type
 //        userType = SharedPreferencesManger.LoadUserType(HomeActivity.this);
         userType = getIntent().getType();
-        SharedPreferencesManger.SaveUserType(this,userType);
+        SharedPreferencesManger.SaveUserType(this, userType);
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
         navView.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
@@ -101,15 +103,24 @@ public class HomeActivity extends BaseActivity {
 
         //grant permission
         onPermission(this);
-        Log.v("user_type",userType);
+        Log.v("user_type", userType);
 
+        //set shopping icon in ( client )
+        changeIcon();
+
+    }
+
+    private void changeIcon() {
+        if(userType.equals(TYPE_CLIENT)){
+            homeActivityIvIcShopping.setImageResource(R.drawable.ic_shopping_cart_solid);
+        }
     }
 
     private void setHomeFragments() {
         moreFragment = new MoreFragment();
         categoriesFragment = new CategoriesFragment();
         profileFragment = new ProfileFragment();
-        orderFragment =new OrderFragment();
+        orderFragment = new OrderFragment();
         restaurantsFragment = new RestaurantsFragment();
     }
 

@@ -17,11 +17,11 @@ import com.ashehata.sofra.R;
 import com.ashehata.sofra.data.api.GetDataService;
 import com.ashehata.sofra.data.api.RetrofitClient;
 import com.ashehata.sofra.data.local.shared.SharedPreferencesManger;
-import com.ashehata.sofra.data.model.reataurant.GeneralResponse;
 import com.ashehata.sofra.data.model.reataurant.foodItem.FoodItem;
 import com.ashehata.sofra.data.model.reataurant.foodItem.FoodItemData;
 import com.ashehata.sofra.helper.InternetState;
 import com.ashehata.sofra.ui.activity.BaseActivity;
+import com.ashehata.sofra.ui.fragment.client.OrderFoodFragment;
 import com.ashehata.sofra.ui.fragment.restaurant.AddFoodFragment;
 
 import java.util.List;
@@ -46,20 +46,22 @@ public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.ViewHo
     private FragmentManager fragmentManager;
     private String mToken;
     private GetDataService getDataService;
+    private int customView ;
 
 
-    public FoodItemAdapter(Activity activity, Context context, List<FoodItemData> foodItemData) {
+    public FoodItemAdapter(Activity activity, Context context, List<FoodItemData> foodItemData,int customView) {
         this.activity = (BaseActivity) activity;
         this.context = context;
         this.foodItemData = foodItemData;
         mToken =  SharedPreferencesManger.LoadData(activity,SharedPreferencesManger.USER_API_TOKEN);
         getDataService = RetrofitClient.getClient().create(GetDataService.class);
+        this.customView = customView;
 
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.custom_food_item,
+        View view = LayoutInflater.from(context).inflate(customView,
                 parent, false);
 
         return new ViewHolder(view);
@@ -69,11 +71,28 @@ public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull FoodItemAdapter.ViewHolder holder, int position) {
         setData(holder, position);
-        setAction(holder, position);
 
+        if(customView==R.layout.custom_food_item){
+            setActionForRestaurant(holder, position);
+        }else {
+            setActionForClient(holder,position);
+        }
     }
 
-    private void setAction(ViewHolder holder, int position) {
+    private void setActionForClient(ViewHolder holder, int position) {
+        holder.view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OrderFoodFragment orderFoodFragment = new OrderFoodFragment();
+                orderFoodFragment.foodItemData = foodItemData.get(position);
+                ReplaceFragment(activity.getSupportFragmentManager(),orderFoodFragment
+                        , R.id.home_activity_fl_display, true);
+            }
+        });
+    }
+
+    private void setActionForRestaurant(ViewHolder holder, int position) {
+
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,10 +108,8 @@ public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.ViewHo
                 addFoodFragment.foodItemData = foodItemData.get(position);
                 ReplaceFragment(activity.getSupportFragmentManager(),addFoodFragment
                         , R.id.home_activity_fl_display, true);
-
             }
         });
-
     }
 
     private void deleteFoodItem(ViewHolder holder, int position) {
@@ -143,8 +160,18 @@ public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.ViewHo
 
         String imageUrl = foodItemData.get(position).getPhotoUrl();
         //Log.v("photo", imageUrl);
-        onLoadImageFromUrl(holder.foodItemImage, imageUrl, context);
-
+        if (customView == R.layout.custom_food_item){
+            onLoadImageFromUrl(holder.foodItemImage, imageUrl, context);
+        }else {
+            onLoadImageFromUrl(holder.foodImage, imageUrl, context);
+            if(foodItemData.get(position).getHasOffer()){
+                holder.offerLine.setVisibility(View.VISIBLE);
+                holder.foodItemOfferPrice.setText(foodItemData.get(position).getOfferPrice());
+            }else {
+                holder.offerLine.setVisibility(View.GONE);
+                holder.foodItemOfferPrice.setVisibility(View.GONE);
+            }
+        }
     }
 
 
@@ -159,8 +186,14 @@ public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.ViewHo
         public TextView foodItemTitle;
         public TextView foodItemDetails;
         public TextView foodItemPrice;
+        public TextView foodItemOfferPrice;
+        public View offerLine ;
+
 
         public CircleImageView foodItemImage;
+        public ImageView foodImage;
+
+
         public ImageView delete;
         public ImageView update;
 
@@ -173,11 +206,16 @@ public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.ViewHo
             foodItemDetails= itemView.findViewById(R.id.food_item_details);
             foodItemPrice = itemView.findViewById(R.id.food_item_price);
 
-            foodItemImage = itemView.findViewById(R.id.food_item_image);
-            delete = itemView.findViewById(R.id.food_item_delete);
-            update = itemView.findViewById(R.id.food_item_update);
+            if(customView == R.layout.custom_food_item){
+                delete = itemView.findViewById(R.id.food_item_delete);
+                update = itemView.findViewById(R.id.food_item_update);
+                foodItemImage = itemView.findViewById(R.id.food_item_image);
 
+            }else {
+                foodImage = itemView.findViewById(R.id.food_item_image);
+                foodItemOfferPrice = itemView.findViewById(R.id.food_item_offer_price);
+                offerLine = itemView.findViewById(R.id.offer_line);
+            }
         }
     }
-
 }

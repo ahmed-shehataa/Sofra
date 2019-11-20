@@ -166,9 +166,9 @@ public interface GetDataService {
     Call<Restaurants> getRestaurants();
 
 
-
-
-
-
+    @GET("items")
+    Call<FoodItem> getRestaurantFoodList(
+            @Query("restaurant_id") int restaurantId ,
+                          @Query("category_id") int categoryId);
 
 }

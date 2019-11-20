@@ -87,5 +87,12 @@
     <string name="accept">قبول</string>
     <string name="cancel">الغاء</string>
     <string name="call">اتصال</string>
+    <string name="your_favorite_restaurant">ابحث عن مطعمك المفضل</string>
+    <string name="opened">مفتوح</string>
+    <string name="food_list">قائمة الطعام</string>
+    <string name="comments_ratings">التعليقات والتقييم</string>
+    <string name="restaurant_info">معلومات المتجر</string>
+    <string name="special_order">طلب خاص</string>
+    <string name="quantity">الكمية</string>
 
 </resources>
