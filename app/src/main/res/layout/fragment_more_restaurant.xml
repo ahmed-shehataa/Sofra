@@ -53,6 +53,7 @@
         style="@style/LineTheme"/>
 
     <TextView
+        android:id="@+id/more_fragment_tv_comments"
         style="@style/TVmore"
         android:drawableStart="@drawable/ic_star_solid"
         android:drawableTint="@color/colorBlack"
@@ -61,6 +62,7 @@
         />
 
     <View
+        android:id="@+id/more_fragment_v_comments_line"
         style="@style/LineTheme"/>
     <TextView
         android:id="@+id/more_fragment_tv_change_password"

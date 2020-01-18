@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ashehata.sofra.R;
-import com.ashehata.sofra.adapter.restaurant.CategoryAdapter;
 import com.ashehata.sofra.adapter.restaurant.FoodItemAdapter;
 import com.ashehata.sofra.data.api.GetDataService;
 import com.ashehata.sofra.data.api.RetrofitClient;
@@ -87,7 +86,7 @@ public class FoodItemFragment extends BaseFragment {
 
     private void getFoodItem() {
 
-        apiToken =  SharedPreferencesManger.LoadData(getActivity(),SharedPreferencesManger.USER_API_TOKEN);
+        apiToken =  SharedPreferencesManger.LoadData(getActivity(),SharedPreferencesManger.API_TOKEN_RESTAURANT);
         getDataService.getFoodItem(apiToken, categoryId).enqueue(new Callback<FoodItem>() {
             @Override
             public void onResponse(Call<FoodItem> call, Response<FoodItem> response) {

@@ -14,65 +14,87 @@
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <androidx.appcompat.widget.Toolbar
-            android:paddingEnd="@dimen/dim_16dp"
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:gravity="center"
+            android:paddingEnd="@dimen/dim_16dp"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
             <LinearLayout
-                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:orientation="horizontal">
+
                 <FrameLayout
                     android:id="@+id/home_activity_fl_notification"
-                    android:foreground="?selectableItemBackground"
-                    android:padding="@dimen/dim_12dp"
-                    android:layout_gravity="start"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    >
+                    android:layout_gravity="start"
+                    android:foreground="?selectableItemBackground"
+                    android:padding="@dimen/dim_12dp">
+
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_bell"/>
+                        android:layout_width="@dimen/dim_25dp"
+                        android:layout_height="@dimen/dim_25dp"
+                        android:src="@drawable/ic_bell" />
 
                 </FrameLayout>
+
                 <TextView
-                    android:textSize="@dimen/txt_15sp"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    tools:text="Hello World !"
                     android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:layout_height="wrap_content">
+                    android:textSize="@dimen/txt_15sp"
+                    tools:text="Hello World !">
 
                 </TextView>
+
                 <FrameLayout
                     android:id="@+id/home_activity_fl_calc"
-                    android:foreground="?selectableItemBackground"
-                    android:padding="@dimen/dim_12dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:foreground="?selectableItemBackground"
                     >
-                    <ImageView
-                        android:id="@+id/home_activity_iv_ic_shopping"
-                        android:layout_gravity="end"
-                        android:layout_width="@dimen/album_dp_20"
-                        android:layout_height="@dimen/album_dp_20"
-                        android:tint="@color/colorRedLight"
-                        android:src="@drawable/ic_calculator"/>
 
+                    <RelativeLayout
+                        android:layout_width="@dimen/album_dp_30"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="@dimen/dim_8dp"
+                        android:foreground="?selectableItemBackground">
+
+                        <ImageView
+                            android:id="@+id/home_activity_iv_ic_shopping"
+                            android:layout_width="@dimen/album_dp_30"
+                            android:layout_height="@dimen/album_dp_30"
+                           android:layout_centerInParent="true"
+                            android:tint="@color/colorRedLight"
+                            android:src="@drawable/ic_calculator" />
+
+                        <TextView
+                            android:id="@+id/home_activity_tv_food_items_num"
+                            android:layout_width="@dimen/dim_25dp"
+                            android:layout_height="@dimen/dim_25dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentEnd="true"
+                            android:layout_marginEnd="-1dp"
+                            android:background="@drawable/background_shap"
+                            android:elevation="@dimen/album_dp_2"
+                            android:gravity="center"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="@dimen/album_sp_14"
+                            android:textStyle="bold" />
+                    </RelativeLayout>
                 </FrameLayout>
 
             </LinearLayout>
 
-
         </androidx.appcompat.widget.Toolbar>
-
     </com.google.android.material.appbar.AppBarLayout>
 
 

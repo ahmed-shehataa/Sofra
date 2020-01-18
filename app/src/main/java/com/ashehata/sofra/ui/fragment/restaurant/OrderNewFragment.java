@@ -2,7 +2,6 @@ package com.ashehata.sofra.ui.fragment.restaurant;
 
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,7 +64,7 @@ public class OrderNewFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_order_new, container, false);
         ButterKnife.bind(this, view);
         getDataService = RetrofitClient.getClient().create(GetDataService.class);
-        apiToken = SharedPreferencesManger.LoadData(getActivity(), SharedPreferencesManger.USER_API_TOKEN);
+        apiToken = SharedPreferencesManger.LoadData(getActivity(), SharedPreferencesManger.API_TOKEN_RESTAURANT);
 
         //set recycler view configuration
         setRecyclerConfig();

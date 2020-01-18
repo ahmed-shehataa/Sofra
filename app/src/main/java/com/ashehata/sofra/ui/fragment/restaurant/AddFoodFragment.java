@@ -122,7 +122,7 @@ public class AddFoodFragment extends BaseFragment {
 
     private void validation() {
         //validation
-        apiToken =  SharedPreferencesManger.LoadData(getActivity(),SharedPreferencesManger.USER_API_TOKEN);
+        apiToken =  SharedPreferencesManger.LoadData(getActivity(),SharedPreferencesManger.API_TOKEN_RESTAURANT);
         productName = addFoodFragmentEtProductName.getText().toString().trim();
         description = addFoodFragmentEtDescription.getText().toString().trim();
         price = addFoodFragmentEtPrice.getText().toString().trim();

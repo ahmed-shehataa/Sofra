@@ -1,6 +1,7 @@
 package com.ashehata.sofra.data.api;
 
 
+import com.ashehata.sofra.data.model.client.clientCycle.ClientCycle;
 import com.ashehata.sofra.data.model.general.regions.Regions;
 import com.ashehata.sofra.data.model.general.restaurants.Restaurants;
 import com.ashehata.sofra.data.model.reataurant.GeneralResponse;
@@ -11,6 +12,8 @@ import com.ashehata.sofra.data.model.reataurant.order.Order;
 import com.ashehata.sofra.data.model.reataurant.restaurantCycle.Profile.User;
 import com.ashehata.sofra.data.model.reataurant.restaurantCycle.changeState.ChangeState;
 import com.ashehata.sofra.data.model.reataurant.restaurantCycle.Profile.Profile;
+
+import java.util.List;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -24,7 +27,6 @@ import retrofit2.http.Part;
 import retrofit2.http.Query;
 
 public interface GetDataService {
-
 
     @POST("restaurant/login")
     @FormUrlEncoded
@@ -139,7 +141,8 @@ public interface GetDataService {
                               @Part("availability") RequestBody availability);
 
     @GET("restaurant/my-offers")
-    Call<Offer> getOffers(@Query("api_token") String apiToken , @Query("page") int page );
+    Call<Offer> getOffers(@Query("api_token") String apiToken,
+                          @Query("page") int page );
 
 
     @POST("restaurant/new-offer")
@@ -152,10 +155,11 @@ public interface GetDataService {
                          @Part("api_token") RequestBody apiToken,
                          @Part("starting_at") RequestBody starting_at,
                          @Part("ending_at") RequestBody ending_at);
+
     @POST("restaurant/delete-offer")
     @FormUrlEncoded
     Call<Offer> deleteOffer(@Field("api_token") String apiToken,
-                                  @Field("offer_id") int itemId);
+                            @Field("offer_id") int itemId);
 
     @GET("restaurant/my-orders")
     Call<Order> getOrders(@Query("api_token") String apiToken ,
@@ -167,8 +171,26 @@ public interface GetDataService {
 
 
     @GET("items")
-    Call<FoodItem> getRestaurantFoodList(
-            @Query("restaurant_id") int restaurantId ,
-                          @Query("category_id") int categoryId);
+    Call<FoodItem> getRestaurantFoodList(@Query("restaurant_id") int restaurantId ,
+                                         @Query("category_id") int categoryId);
+
+
+    @POST("client/new-order")
+    @FormUrlEncoded
+    Call<ChangeState> addNewOrder(@Field("restaurant_id") String restaurantId,
+                                  @Field("note") String note ,
+                                  @Field("address") String address,
+                                  @Field("payment_method_id") String payment_method_id,
+                                  @Field("phone") String phone,
+                                  @Field("name") String name,
+                                  @Field("api_token") String api_token,
+                                  @Field("items[]") List<Integer> items,
+                                  @Field("quantities[]") List<Integer> quantities,
+                                  @Field("notes[]") List<String> notes);
+
+    @POST("client/login")
+    @FormUrlEncoded
+    Call<ClientCycle> clientLogin(@Field("email") String email,
+                                  @Field("password") String password);
 
 }

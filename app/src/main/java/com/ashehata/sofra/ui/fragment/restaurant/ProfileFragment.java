@@ -1,7 +1,9 @@
 package com.ashehata.sofra.ui.fragment.restaurant;
 
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +24,7 @@ import com.ashehata.sofra.data.model.general.regions.RegionData;
 import com.ashehata.sofra.data.model.general.regions.Regions;
 import com.ashehata.sofra.data.model.reataurant.restaurantCycle.Profile.User;
 import com.ashehata.sofra.helper.InternetState;
+import com.ashehata.sofra.ui.activity.UserActivity;
 import com.ashehata.sofra.ui.fragment.BaseFragment;
 import com.yanzhenjie.album.Action;
 import com.yanzhenjie.album.AlbumFile;
@@ -37,6 +40,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.ashehata.sofra.data.local.shared.SharedPreferencesManger.REMEMBER_CLIENT;
+import static com.ashehata.sofra.data.local.shared.SharedPreferencesManger.TYPE_CLIENT;
+import static com.ashehata.sofra.data.local.shared.SharedPreferencesManger.TYPE_RESTAURANT;
 import static com.ashehata.sofra.helper.HelperMethod.ReplaceFragment;
 import static com.ashehata.sofra.helper.HelperMethod.createToast;
 import static com.ashehata.sofra.helper.HelperMethod.disappearKeypad;
@@ -44,6 +50,7 @@ import static com.ashehata.sofra.helper.HelperMethod.onLoadImageFromUri;
 import static com.ashehata.sofra.helper.HelperMethod.onLoadImageFromUrl;
 import static com.ashehata.sofra.helper.HelperMethod.openAlbum;
 import static com.ashehata.sofra.helper.HelperMethod.setSpinner;
+import static java.lang.Integer.parseInt;
 
 public class ProfileFragment extends BaseFragment {
 
@@ -64,10 +71,12 @@ public class ProfileFragment extends BaseFragment {
     Button profileFragmentBtnGoOn;
     @BindView(R.id.profile_fragment_ll_parent)
     LinearLayout profileFragmentLlParent;
+    @BindView(R.id.profile_fragment_et_number)
+    EditText profileFragmentEtNumber;
     private User user;
     private List<String> cityNames;
     private List<String> regionNames;
-    private String imagePath ="";
+    private String imagePath = "";
     private GetDataService getDataService;
     private List<String> citiesList;
     private List<Integer> citiesIds;
@@ -77,6 +86,9 @@ public class ProfileFragment extends BaseFragment {
     private String restaurantEmail;
     private int regionId;
     private String minOrder;
+    private String userType ;
+    private boolean loginBefore;
+    private Integer mRegion;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -92,14 +104,16 @@ public class ProfileFragment extends BaseFragment {
         ButterKnife.bind(this, view);
         getDataService = RetrofitClient.getClient().create(GetDataService.class);
         profileFragmentSpRegion.setVisibility(View.GONE);
+        userType = SharedPreferencesManger.LoadUserType(getActivity());
+        //Log.v("user_type", userType);
         setLists();
         getCities();
-        displayUserData();
-
-
+        if ( userType.equals(TYPE_CLIENT)){
+            displayClientData();
+        }else if(userType.equals(TYPE_RESTAURANT)) {
+            displayRestaurantData();
+        }
         return view;
-
-
     }
 
     private void setLists() {
@@ -108,11 +122,33 @@ public class ProfileFragment extends BaseFragment {
         citiesList = new ArrayList<>();
         citiesIds = new ArrayList<>();
         regionIds = new ArrayList<>();
-        regionList= new ArrayList<>();
+        regionList = new ArrayList<>();
     }
 
-    private void displayUserData() {
-        user = SharedPreferencesManger.loadUserData(getActivity());
+    private void displayClientData() {
+
+        loginBefore = false;
+        loginBefore = SharedPreferencesManger.LoadBoolean(getActivity(),REMEMBER_CLIENT);
+        if(loginBefore == true){
+            user = SharedPreferencesManger.loadClientData(getActivity());
+            onLoadImageFromUrl(profileFragmentIvLogo, user.getPhotoUrl(), getContext());
+            profileFragmentEtRestaurantName.setText(user.getName());
+            profileFragmentEtRestaurantEmail.setText(user.getEmail());
+            profileFragmentEtMinCharger.setVisibility(View.GONE);
+            profileFragmentEtNumber.setVisibility(View.VISIBLE);
+            profileFragmentEtNumber.setText(user.getPhone());
+            profileFragmentBtnGoOn.setText(getString(R.string.update));
+        }else {
+            loginFragment();
+            profileFragmentLlParent.setVisibility(View.GONE);
+        }
+    }
+    private void loginFragment() {
+        getActivity().startActivity(new Intent(getActivity(), UserActivity.class).setType(TYPE_CLIENT));
+    }
+
+    private void displayRestaurantData() {
+        user = SharedPreferencesManger.loadRestaurantData(getActivity());
         onLoadImageFromUrl(profileFragmentIvLogo, user.getPhotoUrl(), getContext());
         profileFragmentEtRestaurantName.setText(user.getName());
         profileFragmentEtRestaurantEmail.setText(user.getEmail());
@@ -120,7 +156,7 @@ public class ProfileFragment extends BaseFragment {
 
     }
 
-    @OnClick({R.id.profile_fragment_btn_go_on, R.id.profile_fragment_ll_parent,R.id.profile_fragment_iv_logo})
+    @OnClick({R.id.profile_fragment_btn_go_on, R.id.profile_fragment_ll_parent, R.id.profile_fragment_iv_logo})
     public void onViewClicked(View view) {
         disappearKeypad(getActivity(), getView());
         switch (view.getId()) {
@@ -141,37 +177,37 @@ public class ProfileFragment extends BaseFragment {
     private void goOnSend() {
         restaurantName = profileFragmentEtRestaurantName.getText().toString().trim();
         restaurantEmail = profileFragmentEtRestaurantEmail.getText().toString().trim();
-        if(regionList.size()!=0){
+        if (regionList.size() != 0) {
             regionId = regionIds.get(profileFragmentSpRegion.getSelectedItemPosition());
 
         }
         //Toast.makeText(getActivity(), regionId+"", Toast.LENGTH_SHORT).show();
         minOrder = profileFragmentEtMinCharger.getText().toString().trim();
 
-        if(restaurantName.isEmpty()){
-            createToast(getContext(),getString(R.string.insert_restaurant_name), Toast.LENGTH_SHORT);
-        }else if(restaurantEmail.isEmpty()){
-            createToast(getContext(),getString(R.string.insert_email), Toast.LENGTH_SHORT);
-        }else if(regionId==0){
-            createToast(getContext(),getString(R.string.insert_region), Toast.LENGTH_SHORT);
+        if (restaurantName.isEmpty()) {
+            createToast(getContext(), getString(R.string.insert_restaurant_name), Toast.LENGTH_SHORT);
+        } else if (restaurantEmail.isEmpty()) {
+            createToast(getContext(), getString(R.string.insert_email), Toast.LENGTH_SHORT);
+        } else if (regionId == 0) {
+            createToast(getContext(), getString(R.string.insert_region), Toast.LENGTH_SHORT);
 
-        }else if(minOrder.isEmpty()){
-            createToast(getContext(),getString(R.string.insert_min_order), Toast.LENGTH_SHORT);
-        }else {
+        } else if (minOrder.isEmpty()) {
+            createToast(getContext(), getString(R.string.insert_min_order), Toast.LENGTH_SHORT);
+        } else {
             if (InternetState.isConnected(getContext())) {
-                ProfileSendFragment profileSendFragment= new ProfileSendFragment();
+                ProfileSendFragment profileSendFragment = new ProfileSendFragment();
                 profileSendFragment.restaurantName = restaurantName;
                 profileSendFragment.restaurantEmail = restaurantEmail;
                 profileSendFragment.regionId = regionId;
                 profileSendFragment.minOrder = minOrder;
                 profileSendFragment.imagePath = imagePath;
-                ReplaceFragment(getFragmentManager(),profileSendFragment
-                        ,R.id.home_activity_fl_display
-                        ,true);
+                ReplaceFragment(getFragmentManager(), profileSendFragment
+                        , R.id.home_activity_fl_display
+                        , true);
 
 
-            }else {
-                createToast(getContext(),getString(R.string.no_internet), Toast.LENGTH_SHORT);
+            } else {
+                createToast(getContext(), getString(R.string.no_internet), Toast.LENGTH_SHORT);
 
             }
         }
@@ -188,40 +224,42 @@ public class ProfileFragment extends BaseFragment {
     }
 
     private void getCities() {
-        if(InternetState.isConnected(getContext())){
+        if (InternetState.isConnected(getContext())) {
             getDataService.getCities().enqueue(new Callback<Regions>() {
                 @Override
                 public void onResponse(Call<Regions> call, Response<Regions> response) {
                     try {
                         Regions regions = response.body();
-                        if (regions.getStatus() == 1){
+                        if (regions.getStatus() == 1) {
 
                             citiesList.add(getString(R.string.city));
                             citiesIds.add(0);
                             List<RegionData> citiesData = regions.getData().getData();
-                            for(int i =0; i<citiesData.size() ;i++){
+                            for (int i = 0; i < citiesData.size(); i++) {
                                 citiesList.add(citiesData.get(i).getName());
                                 citiesIds.add(citiesData.get(i).getId());
                             }
-                            setSpinner(getActivity(),profileFragmentSpCity,citiesList);
-                            profileFragmentSpCity.setSelection(citiesIds.get(Integer.parseInt(user.getRegion().getCityId())));
+                            setSpinner(getActivity(), profileFragmentSpCity, citiesList);
+                            profileFragmentSpCity.setSelection(citiesIds.get(parseInt(user.getRegion().getCityId())));
                             setRegion();
 
-                        }else {
+                        } else {
 
                         }
-                    }catch (Exception e){
+                    } catch (Exception e) {
                     }
                 }
+
                 @Override
                 public void onFailure(Call<Regions> call, Throwable t) {
 
                 }
             });
-        }else {
+        } else {
 
         }
     }
+
     private void setRegion() {
         profileFragmentSpCity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -232,13 +270,14 @@ public class ProfileFragment extends BaseFragment {
                 getRegion(id);
                 profileFragmentSpRegion.setVisibility(View.VISIBLE);
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
         });
-
     }
+
     private void getRegion(int id) {
         //Toast.makeText(getActivity(), id+"", Toast.LENGTH_SHORT).show();
         getDataService.getRegion(id).enqueue(new Callback<Regions>() {
@@ -255,20 +294,24 @@ public class ProfileFragment extends BaseFragment {
                         regionList.add(citiesData.get(i).getName());
                         regionIds.add(citiesData.get(i).getId());
                     }
+
                     setSpinner(getActivity(), profileFragmentSpRegion, regionList);
-                    //profileFragmentSpRegion.setSelection(regionIds.get((user.getRegionId())));
+                    for(int i =0 ; i< regionIds.size()  ;i++){
+
+                        if (regionIds.get(i) == parseInt(user.getRegionId())){
+                            //code here
+                            mRegion = i;
+                            profileFragmentSpRegion.setSelection(mRegion);
+                            break;
+                        }
+                    }
 
                 }
             }
-
             @Override
             public void onFailure(Call<Regions> call, Throwable t) {
 
             }
         });
-
     }
-
-
-
 }

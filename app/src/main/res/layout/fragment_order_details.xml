@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/order_details"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/txt_16sp" />
+
+    <EditText
+        android:elevation="@dimen/album_dp_1"
+        android:layout_marginTop="@dimen/dim_4dp"
+        android:hint="@string/add_notes"
+        android:id="@+id/order_details_fragment_et_notes"
+        android:lines="5"
+        android:inputType="textMultiLine"
+        style="@style/ETChangePassword"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        />
+
+    <TextView
+        android:layout_marginStart="@dimen/dim_20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/album_sp_14"
+        android:textColor="@color/colorBlack"
+        android:text="@string/address"
+        android:gravity="center"
+        />
+    <TextView
+        android:id="@+id/order_details_fragment_tv_address"
+        android:layout_marginStart="@dimen/dim_20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/album_sp_14"
+        android:textColor="@color/colorRedLight"
+        tools:text="@string/address"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:layout_marginTop="@dimen/dim_12dp"
+        android:layout_marginStart="@dimen/dim_20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/album_sp_14"
+        android:textColor="@color/colorBlack"
+        android:text="@string/pay_method"
+        android:gravity="center"
+        />
+
+    <RadioGroup
+        android:id="@+id/order_details_fragment_rg_pay_method"
+        android:orientation="horizontal"
+        android:padding="@dimen/dim_8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/order_details_fragment_rb_cash"
+            android:layout_gravity="start"
+            android:buttonTint="@color/colorRedLight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cash_on_delivery" />
+        <RadioButton
+            android:id="@+id/order_details_fragment_rb_online"
+            android:layout_gravity="end"
+            android:buttonTint="@color/colorRedLight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/online"
+            />
+    </RadioGroup>
+
+    <LinearLayout
+        android:padding="@dimen/album_dp_4"
+        android:elevation="@dimen/album_dp_2"
+        android:background="@drawable/background_shap"
+        android:layout_marginStart="@dimen/album_dp_20"
+        android:layout_marginEnd="@dimen/album_dp_20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_marginBottom="@dimen/dim_4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/album_sp_14"
+                android:textColor="@color/colorBlack"
+                android:text="@string/total"
+                android:gravity="center"
+                />
+
+            <TextView
+                android:id="@+id/order_details_fragment_tv_total"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/dim_8dp"
+                android:gravity="center"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/album_sp_14"
+                tools:text="@string/total" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginBottom="@dimen/dim_4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/deliver_cost"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/album_sp_14" />
+            <TextView
+                android:id="@+id/order_details_fragment_tv_deliver_cost"
+                android:layout_marginStart="@dimen/dim_8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/album_sp_14"
+                android:textColor="@color/colorBlack"
+                tools:text="@string/total"
+                android:gravity="center"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginBottom="@dimen/dim_4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/total_price"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/album_sp_14" />
+
+            <TextView
+                android:id="@+id/order_details_fragment_tv_total_price"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/dim_8dp"
+                android:gravity="center"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/album_sp_14"
+                tools:text="@string/total" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/order_details_fragment_btn_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/group"
+        android:layout_marginStart="@dimen/dim_80"
+        android:layout_marginTop="@dimen/dim_8dp"
+        android:layout_marginEnd="@dimen/dim_80"
+        android:layout_marginBottom="@dimen/dim_8dp"
+        android:background="@drawable/button_backgrond_red_redius"
+        android:backgroundTint="@color/colorRedLight"
+        android:text="@string/confirm_request"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/txt_16sp" />
+
+</LinearLayout>

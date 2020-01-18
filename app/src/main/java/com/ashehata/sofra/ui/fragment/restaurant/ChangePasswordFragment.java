@@ -59,7 +59,7 @@ public class ChangePasswordFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_change_password, container, false);
         ButterKnife.bind(this, view);
         getDataService = RetrofitClient.getClient().create(GetDataService.class);
-        apiToken = SharedPreferencesManger.LoadData(getActivity(),SharedPreferencesManger.USER_API_TOKEN);
+        apiToken = SharedPreferencesManger.LoadData(getActivity(),SharedPreferencesManger.API_TOKEN_RESTAURANT);
 
 
         return view;

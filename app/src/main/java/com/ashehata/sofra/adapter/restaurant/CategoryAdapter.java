@@ -63,7 +63,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         this.activity = (BaseActivity) activity;
         this.context = context;
         this.categoryData = categoryData;
-        mToken = SharedPreferencesManger.LoadData(activity,SharedPreferencesManger.USER_API_TOKEN);
+        mToken = SharedPreferencesManger.LoadData(activity,SharedPreferencesManger.API_TOKEN_RESTAURANT);
         getDataService = RetrofitClient.getClient().create(GetDataService.class);
 
     }

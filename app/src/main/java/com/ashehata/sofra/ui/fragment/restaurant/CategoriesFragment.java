@@ -84,7 +84,7 @@ public class CategoriesFragment extends BaseFragment {
     }
 
     public void getCategories() {
-        apiToken = SharedPreferencesManger.LoadData(getActivity(),SharedPreferencesManger.USER_API_TOKEN);
+        apiToken = SharedPreferencesManger.LoadData(getActivity(),SharedPreferencesManger.API_TOKEN_RESTAURANT);
         call = getDataService.getCategories(apiToken) ;
         call.enqueue(new Callback<Categories>() {
             @Override

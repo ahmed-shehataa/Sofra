@@ -115,7 +115,9 @@ public class RestaurantsFragment extends BaseFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        userCall.cancel();
+        if(userCall !=null){
+            userCall.cancel();
+        }
     }
     @Override
     public void onBack() {

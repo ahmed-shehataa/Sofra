@@ -97,5 +97,16 @@
     <string name="restaurant_info">Restaurant information</string>
     <string name="special_order">Special order</string>
     <string name="quantity">Quantity</string>
+    <string name="confirm_request">Confirm the request</string>
+    <string name="add_more">Add more</string>
+    <string name="no_items_count">No food items found</string>
+    <string name="the_offers">The offers</string>
+    <string name="order_details">Order details</string>
+    <string name="add_notes">Add notes</string>
+    <string name="pay_method">Pay method</string>
+    <string name="cash_on_delivery">Cash on delivery</string>
+    <string name="online">Online cash</string>
+    <string name="deliver_cost">Deliver cost</string>
+    <string name="total_price">Total price</string>
 
 </resources>

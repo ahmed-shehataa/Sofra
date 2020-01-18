@@ -2,31 +2,27 @@ package com.ashehata.sofra.data.local.shared;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
+import com.ashehata.sofra.data.model.client.clientCycle.ClientCycle;
 import com.ashehata.sofra.data.model.reataurant.restaurantCycle.Profile.User;
 import com.google.gson.Gson;
 
 public class SharedPreferencesManger {
 
     private static SharedPreferences sharedPreferences = null;
-    private static String RESTAURANT_USER_DATA = "USER_DATA";
-    public static String USER_API_TOKEN = "USER_API_TOKEN";
-
-  //nYntJTubK4ai27SkecCVpIICxAl2DfTgiGanCNXXBA1QdhQx3bFiuJpyDe7j
-  //mine : Zc3CHfa2Slem4zXMzsP33HRN4k4bq0KAQROROhDUhLFiSbtWRVBcNLZcJJpo
-    public static String USER_PASSWORD = "USER_PASSWORD";
-    public static String REMEMBER_RESTAURANT  = "REMEMBER_rest";
-    public static String REMEMBER_CLIENT  = "REMEMBER_client";
-    private static String USER_TYPE  = "TYPE";
+    private static String RESTAURANT_USER_DATA = "USER_RESTAURANT";
+    private static String CLIENT_USER_DATA = "USER_CLIENT";
+    public static String API_TOKEN_RESTAURANT = "API_TOKEN_RESTAURANT";
+    public static String API_TOKEN_CLIENT = "API_TOKEN_CLIENT";
+    //nYntJTubK4ai27SkecCVpIICxAl2DfTgiGanCNXXBA1QdhQx3bFiuJpyDe7j
+    //mine : Zc3CHfa2Slem4zXMzsP33HRN4k4bq0KAQROROhDUhLFiSbtWRVBcNLZcJJpo
+    public static String REMEMBER_RESTAURANT = "REMEMBER_rest";
+    public static String REMEMBER_CLIENT = "REMEMBER_client";
+    private static String USER_TYPE = "TYPE";
     public static String TYPE_CLIENT = "CLIENT";
     public static String TYPE_RESTAURANT = "RESTAURANT";
 
-    /*
-    public static String getReadyApiToken(){
-        return "nYntJTubK4ai27SkecCVpIICxAl2DfTgiGanCNXXBA1QdhQx3bFiuJpyDe7j";
-    }
-
-     */
 
     public static void setSharedPreferences(Activity activity) {
         if (sharedPreferences == null) {
@@ -36,16 +32,18 @@ public class SharedPreferencesManger {
     }
 
     public static void SaveData(Activity activity, String data_Key, String data_Value) {
+        setSharedPreferences(activity);
         if (sharedPreferences != null) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString(data_Key, data_Value);
-            editor.commit();
+            editor.apply();
         } else {
             setSharedPreferences(activity);
         }
     }
 
     public static void SaveData(Activity activity, String data_Key, boolean data_Value) {
+        setSharedPreferences(activity);
         if (sharedPreferences != null) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putBoolean(data_Key, data_Value);
@@ -56,8 +54,10 @@ public class SharedPreferencesManger {
     }
 
     public static String LoadData(Activity activity, String data_Key) {
+        setSharedPreferences(activity);
         if (sharedPreferences != null) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.apply();
         } else {
             setSharedPreferences(activity);
         }
@@ -65,8 +65,8 @@ public class SharedPreferencesManger {
         return sharedPreferences.getString(data_Key, null);
     }
 
-
     public static boolean LoadBoolean(Activity activity, String data_Key) {
+        setSharedPreferences(activity);
         if (sharedPreferences != null) {
             SharedPreferences.Editor editor = sharedPreferences.edit();
         } else {
@@ -87,15 +87,28 @@ public class SharedPreferencesManger {
         }
     }
 
-    public static void saveUserData(Activity activity, User userData) {
+    public static void saveRestaurantData(Activity activity, User userData) {
         SaveData(activity, RESTAURANT_USER_DATA, userData);
     }
 
-    public static User loadUserData(Activity activity) {
+    public static void saveClientData(Activity activity, User clientCycle) {
+        SaveData(activity, CLIENT_USER_DATA, clientCycle);
+    }
+
+    public static User loadRestaurantData(Activity activity) {
         User userData = null;
 
         Gson gson = new Gson();
         userData = gson.fromJson(LoadData(activity, RESTAURANT_USER_DATA), User.class);
+
+        return userData;
+    }
+
+    public static User loadClientData(Activity activity) {
+        User userData = null;
+
+        Gson gson = new Gson();
+        userData = gson.fromJson(LoadData(activity, CLIENT_USER_DATA), User.class);
 
         return userData;
     }
@@ -108,11 +121,12 @@ public class SharedPreferencesManger {
             editor.commit();
         }
     }
-    public static void SaveUserType(Activity activity,String user_type){
-        SaveData(activity,USER_TYPE,user_type);
-    }
-    public static String LoadUserType(Activity activity){
-        return LoadData(activity,USER_TYPE);
+
+    public static void SaveUserType(Activity activity, String user_type) {
+        SaveData(activity, USER_TYPE, user_type);
     }
 
+    public static String LoadUserType(Activity activity) {
+        return LoadData(activity, USER_TYPE);
+    }
 }

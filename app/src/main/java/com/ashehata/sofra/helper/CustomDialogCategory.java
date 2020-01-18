@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
-import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -24,12 +22,9 @@ import com.ashehata.sofra.data.local.shared.SharedPreferencesManger;
 import com.ashehata.sofra.data.model.reataurant.Categories.Categories;
 import com.ashehata.sofra.ui.fragment.restaurant.CategoriesFragment;
 import com.yanzhenjie.album.Action;
-import com.yanzhenjie.album.Album;
-import com.yanzhenjie.album.AlbumConfig;
 import com.yanzhenjie.album.AlbumFile;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -135,7 +130,7 @@ public class CustomDialogCategory extends Dialog {
         showProgressDialog(activity, activity.getString(R.string.wait_moment));
         //get image path
         MultipartBody.Part part = convertFileToMultipart(imagePath, "photo");
-        apiToken = SharedPreferencesManger.LoadData(activity,SharedPreferencesManger.USER_API_TOKEN);
+        apiToken = SharedPreferencesManger.LoadData(activity,SharedPreferencesManger.API_TOKEN_RESTAURANT);
         //"Zc3CHfa2Slem4zXMzsP33HRN4k4bq0KAQROROhDUhLFiSbtWRVBcNLZcJJpo";
         getDataService.addCategory(part, convertToRequestBody(categoryName), convertToRequestBody(apiToken)).enqueue(new Callback<Categories>() {
             @Override

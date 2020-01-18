@@ -19,7 +19,6 @@ import com.ashehata.sofra.data.api.GetDataService;
 import com.ashehata.sofra.data.api.RetrofitClient;
 import com.ashehata.sofra.data.local.shared.SharedPreferencesManger;
 import com.ashehata.sofra.data.model.DateModel;
-import com.ashehata.sofra.data.model.reataurant.foodItem.FoodItem;
 import com.ashehata.sofra.data.model.reataurant.offer.Offer;
 import com.ashehata.sofra.helper.InternetState;
 import com.ashehata.sofra.ui.fragment.BaseFragment;
@@ -152,7 +151,7 @@ public class AddOfferFragment extends BaseFragment {
     }
 
     private void addOrder() {
-        apiToken = SharedPreferencesManger.LoadData(getActivity(), SharedPreferencesManger.USER_API_TOKEN);
+        apiToken = SharedPreferencesManger.LoadData(getActivity(), SharedPreferencesManger.API_TOKEN_RESTAURANT);
         disappearKeypad(getActivity(), getView());
         showProgressDialog(getActivity(), getString(R.string.wait_moment));
         getDataService.addOffer(convertImageToPart(imagePath),

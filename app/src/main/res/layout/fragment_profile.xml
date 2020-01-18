@@ -53,6 +53,17 @@
             style="@style/ETChangePassword"
             />
 
+        <EditText
+            android:visibility="gone"
+            android:drawableStart="@drawable/ic_phone"
+            android:drawableTint="@color/colorBlack"
+            android:drawablePadding="@dimen/album_dp_4"
+            android:id="@+id/profile_fragment_et_number"
+            android:hint="@string/restaurant_name"
+            android:inputType="text"
+            style="@style/ETChangePassword"
+            />
+
         <Spinner
             android:id="@+id/profile_fragment_sp_city"
             android:theme="@style/mySpinnerItemStyle"

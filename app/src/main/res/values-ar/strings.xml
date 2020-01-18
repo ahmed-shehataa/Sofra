@@ -94,5 +94,16 @@
     <string name="restaurant_info">معلومات المتجر</string>
     <string name="special_order">طلب خاص</string>
     <string name="quantity">الكمية</string>
+    <string name="confirm_request">تاكيد الطلب</string>
+    <string name="add_more">اضافة المزيد</string>
+    <string name="no_items_count">لا يوجد عناصر في السلة</string>
+    <string name="the_offers">العروض</string>
+    <string name="order_details">تفاصيل الطلب</string>
+    <string name="add_notes">اضافة ملاحظات</string>
+    <string name="pay_method">الدفع</string>
+    <string name="cash_on_delivery">الدفع عند التوصيل</string>
+    <string name="online">الدفع اونلاين</string>
+    <string name="deliver_cost">رسوم التوصيل</string>
+    <string name="total_price">المبلغ الاجمالي</string>
 
 </resources>

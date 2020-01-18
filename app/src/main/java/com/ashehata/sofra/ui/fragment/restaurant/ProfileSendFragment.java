@@ -83,7 +83,7 @@ public class ProfileSendFragment extends BaseFragment implements Switch.OnClickL
         View view = inflater.inflate(R.layout.fragment_profile_send, container, false);
         ButterKnife.bind(this, view);
         getDataService = RetrofitClient.getClient().create(GetDataService.class);
-        mToken = SharedPreferencesManger.LoadData(getActivity(),SharedPreferencesManger.USER_API_TOKEN);
+        mToken = SharedPreferencesManger.LoadData(getActivity(),SharedPreferencesManger.API_TOKEN_RESTAURANT);
 
         displayUserData();
 
@@ -92,7 +92,7 @@ public class ProfileSendFragment extends BaseFragment implements Switch.OnClickL
     }
 
     private void displayUserData() {
-        user = SharedPreferencesManger.loadUserData(getActivity());
+        user = SharedPreferencesManger.loadRestaurantData(getActivity());
         profileSendFragmentEtCost.setText(user.getDeliveryCost());
         profileSendFragmentEtDeliverTime.setText(user.getDeliveryTime());
         profileSendFragmentEtPhone.setText(user.getPhone());
@@ -157,7 +157,7 @@ public class ProfileSendFragment extends BaseFragment implements Switch.OnClickL
                try {
                    if (profile.getStatus() ==1){
                        createToast(getContext(),profile.getMsg(),Toast.LENGTH_SHORT);
-                       SharedPreferencesManger.saveUserData(getActivity(),profile.getData().getUser());
+                       SharedPreferencesManger.saveRestaurantData(getActivity(),profile.getData().getUser());
                         ReplaceFragment(getFragmentManager(),
                                         new CategoriesFragment(),
                                         R.id.home_activity_fl_display,
@@ -195,7 +195,7 @@ public class ProfileSendFragment extends BaseFragment implements Switch.OnClickL
                     if (data.getStatus() ==1) {
                         //createToast(getContext(),data.getMsg(),Toast.LENGTH_SHORT);
                         user.setAvailability(status);
-                        SharedPreferencesManger.saveUserData(getActivity(),user);
+                        SharedPreferencesManger.saveRestaurantData(getActivity(),user);
 
                     }else{
                         createToast(getContext(),data.getMsg(),Toast.LENGTH_SHORT);

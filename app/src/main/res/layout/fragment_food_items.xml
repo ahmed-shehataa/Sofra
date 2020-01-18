@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/food_items_fragment_rv_my_food_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_marginTop="@dimen/dim_12dp"
+                android:id="@+id/food_items_fragment_iv_empty"
+                android:layout_gravity="center"
+                android:layout_width="@dimen/dim_80"
+                android:layout_height="@dimen/dim_80"
+                android:tint="@color/colorRedLight"
+                android:src="@drawable/ic_shopping_cart_solid"/>
+
+            <TextView
+                android:layout_marginTop="@dimen/dim_12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/total"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/album_sp_14"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/food_items_fragment_tv_total"
+                android:layout_width="@dimen/dim_50dp"
+                android:layout_height="@dimen/dim_50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dim_8dp"
+                android:background="@drawable/background_shap"
+                android:elevation="@dimen/album_dp_1"
+                android:gravity="center"
+                android:padding="@dimen/dim_4dp"
+                android:textColor="@color/colorBlack" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="@dimen/dim_12dp">
+
+                <Button
+                    android:id="@+id/food_items_fragment_btn_confirm"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_backgrond_red_redius"
+                    android:backgroundTint="@color/colorRedLight"
+                    android:elevation="@dimen/album_dp_1"
+                    android:text="@string/confirm_request"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/album_sp_14" />
+
+                <Button
+                    android:id="@+id/food_items_fragment_btn_add_more"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/group"
+                    android:layout_marginStart="@dimen/dim_12dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_backgrond_red_redius"
+                    android:backgroundTint="@color/colorRedLight"
+                    android:elevation="@dimen/album_dp_1"
+                    android:text="@string/add_more"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/album_sp_14" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+        <ProgressBar
+            android:id="@+id/food_items_fragment_pb_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:elevation="1dp"
+            android:indeterminateTint="@color/colorRedLight" />
+
+    </RelativeLayout>
+
+</androidx.core.widget.NestedScrollView>

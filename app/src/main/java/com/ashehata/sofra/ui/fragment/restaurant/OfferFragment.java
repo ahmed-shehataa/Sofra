@@ -87,7 +87,7 @@ public class OfferFragment extends BaseFragment {
     }
 
     private void getOrder() {
-        apiToken = SharedPreferencesManger.LoadData(getActivity(), SharedPreferencesManger.USER_API_TOKEN);
+        apiToken = SharedPreferencesManger.LoadData(getActivity(), SharedPreferencesManger.API_TOKEN_RESTAURANT);
         offerCall =getDataService.getOffers(apiToken,1);
 
         offerCall.enqueue(new Callback<Offer>() {

@@ -49,7 +49,7 @@ public class OfferAdapter extends RecyclerView.Adapter<OfferAdapter.ViewHolder> 
         this.activity = (BaseActivity) activity;
         this.context = context;
         this.offerData = offerDataList;
-        mToken =  SharedPreferencesManger.LoadData(activity,SharedPreferencesManger.USER_API_TOKEN);
+        mToken =  SharedPreferencesManger.LoadData(activity,SharedPreferencesManger.API_TOKEN_RESTAURANT);
         getDataService = RetrofitClient.getClient().create(GetDataService.class);
 
     }

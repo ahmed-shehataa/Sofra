@@ -17,10 +17,12 @@ import com.ashehata.sofra.R;
 import com.ashehata.sofra.data.api.GetDataService;
 import com.ashehata.sofra.data.api.RetrofitClient;
 import com.ashehata.sofra.data.local.shared.SharedPreferencesManger;
+import com.ashehata.sofra.data.model.client.clientCycle.ClientCycle;
 import com.ashehata.sofra.data.model.reataurant.restaurantCycle.Profile.Profile;
 import com.ashehata.sofra.helper.InternetState;
 import com.ashehata.sofra.ui.activity.HomeActivity;
 import com.ashehata.sofra.ui.activity.SplashActivity;
+import com.ashehata.sofra.ui.activity.UserActivity;
 import com.ashehata.sofra.ui.fragment.BaseFragment;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -31,6 +33,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.ashehata.sofra.data.local.shared.SharedPreferencesManger.TYPE_CLIENT;
+import static com.ashehata.sofra.data.local.shared.SharedPreferencesManger.TYPE_RESTAURANT;
 import static com.ashehata.sofra.helper.HelperMethod.ReplaceFragment;
 import static com.ashehata.sofra.helper.HelperMethod.createToast;
 import static com.ashehata.sofra.helper.HelperMethod.disappearKeypad;
@@ -56,6 +60,8 @@ public class LoginFragment extends BaseFragment {
     RelativeLayout loginFragmentRlParent;
     private String email;
     private String password;
+    public String userType = "";
+
 
 
     @Override
@@ -70,9 +76,12 @@ public class LoginFragment extends BaseFragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_login, container, false);
         ButterKnife.bind(this, view);
+
         //loginFragmentEtEmail.clearFocus();
         getDataService = RetrofitClient.getClient().create(GetDataService.class);
         setEtTypeFace(loginFragmentEtPassword);
+
+        userType = SharedPreferencesManger.LoadUserType(getActivity());
 
 
         return view;
@@ -80,8 +89,12 @@ public class LoginFragment extends BaseFragment {
 
     @Override
     public void onBack() {
-        startActivity(new Intent(getContext(), SplashActivity.class));
-        getActivity().finish();
+        if(userType.equals(TYPE_CLIENT) && userType != null){
+            getActivity().finish();
+        }else {
+            startActivity(new Intent(getContext(), SplashActivity.class));
+            getActivity().finish();
+        }
     }
 
     @OnClick({R.id.login_fragment_btn_sign_in, R.id.login_fragment_tv_register, R.id.login_fragment_tv_reset_password, R.id.login_fragment_rl_parent})
@@ -111,7 +124,6 @@ public class LoginFragment extends BaseFragment {
         ReplaceFragment(getFragmentManager(), new RegisterFragment(), R.id.login_activity_fl_login
                 , true);
 
-
     }
 
     private void signIn() {
@@ -129,7 +141,12 @@ public class LoginFragment extends BaseFragment {
                     , Toast.LENGTH_SHORT);
         } else {
             if (InternetState.isConnected(getContext())) {
-                sendData();
+                if (userType.equals(TYPE_CLIENT)){
+                    getDataFromClient();
+
+                }else if (userType.equals(TYPE_RESTAURANT)) {
+                    getDataFromRestaurant();
+                }
 
             } else {
                 createToast(getContext(), getString(R.string.no_internet)
@@ -137,10 +154,47 @@ public class LoginFragment extends BaseFragment {
             }
         }
 
-
     }
 
-    private void sendData() {
+    private void getDataFromClient() {
+        //show progress indicator
+        showProgressDialog(getActivity(), getString(R.string.wait_moment));
+        disappearKeypad(getActivity(), getView());
+        //make an api request
+        getDataService.clientLogin(email,password).enqueue(new Callback<ClientCycle>() {
+            @Override
+            public void onResponse(Call<ClientCycle> call, Response<ClientCycle> response) {
+                //hide progress indicator
+                dismissProgressDialog();
+                ClientCycle clientCycle = response.body();
+                if (clientCycle.getStatus() == 1) {
+
+                    try {
+                        //save user data to shared preference
+                        SharedPreferencesManger.saveClientData(getActivity(), clientCycle.getData().getUser());
+                        //Log.v("myApiToken", clientCycle.getData().getApiToken());
+                        SharedPreferencesManger.SaveData(getActivity(), SharedPreferencesManger.API_TOKEN_CLIENT,
+                                clientCycle.getData().getApiToken());
+
+                        SharedPreferencesManger.SaveData(getActivity(), SharedPreferencesManger.REMEMBER_CLIENT
+                                , true);
+                        //sent user to home cycle
+                        userType = TYPE_CLIENT;
+                        getActivity().finish();
+
+                    } catch (Exception e) {
+
+                    }
+                }
+            }
+            @Override
+            public void onFailure(Call<ClientCycle> call, Throwable t) {
+                dismissProgressDialog();
+            }
+        });
+    }
+
+    private void getDataFromRestaurant() {
         //show progress indicator
         showProgressDialog(getActivity(), getString(R.string.wait_moment));
         disappearKeypad(getActivity(), getView());
@@ -155,16 +209,17 @@ public class LoginFragment extends BaseFragment {
 
                     try {
                         //save user data to shared preference
-                        SharedPreferencesManger.saveUserData(getActivity(),restaurantLogin.getData().getUser());
+                        SharedPreferencesManger.saveRestaurantData(getActivity(),restaurantLogin.getData().getUser());
 
                         Log.v("myApiToken", restaurantLogin.getData().getApiToken());
-                        SharedPreferencesManger.SaveData(getActivity(),SharedPreferencesManger.USER_API_TOKEN,
+                        SharedPreferencesManger.SaveData(getActivity(),SharedPreferencesManger.API_TOKEN_RESTAURANT,
                                 restaurantLogin.getData().getApiToken());
 
                         SharedPreferencesManger.SaveData(getActivity(), SharedPreferencesManger.REMEMBER_RESTAURANT
                                 , true);
                         //sent user to home cycle
-                        startActivity(new Intent(getActivity(), HomeActivity.class));
+                        userType = TYPE_RESTAURANT;
+                        startActivity(new Intent(getActivity(), HomeActivity.class).setType(userType));
                         getActivity().finish();
 
                     } catch (Exception e) {
@@ -175,9 +230,7 @@ public class LoginFragment extends BaseFragment {
                     createToast(getContext(), restaurantLogin.getMsg()
                             , Toast.LENGTH_SHORT);
                 }
-
             }
-
             @Override
             public void onFailure(Call<Profile> call, Throwable t) {
                 dismissProgressDialog();
@@ -185,8 +238,5 @@ public class LoginFragment extends BaseFragment {
 //                        , Toast.LENGTH_SHORT);
             }
         });
-
-
     }
-
 }

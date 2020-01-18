@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ashehata.sofra.R;
 import com.ashehata.sofra.data.api.GetDataService;
 import com.ashehata.sofra.data.api.RetrofitClient;
+import com.ashehata.sofra.data.local.room.AppDatabase;
 import com.ashehata.sofra.data.local.shared.SharedPreferencesManger;
 import com.ashehata.sofra.data.model.reataurant.foodItem.FoodItem;
 import com.ashehata.sofra.data.model.reataurant.foodItem.FoodItemData;
@@ -25,6 +27,7 @@ import com.ashehata.sofra.ui.fragment.client.OrderFoodFragment;
 import com.ashehata.sofra.ui.fragment.restaurant.AddFoodFragment;
 
 import java.util.List;
+import java.util.concurrent.Executors;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
@@ -47,13 +50,15 @@ public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.ViewHo
     private String mToken;
     private GetDataService getDataService;
     private int customView ;
+    private int currentQuantity;
+
 
 
     public FoodItemAdapter(Activity activity, Context context, List<FoodItemData> foodItemData,int customView) {
         this.activity = (BaseActivity) activity;
         this.context = context;
         this.foodItemData = foodItemData;
-        mToken =  SharedPreferencesManger.LoadData(activity,SharedPreferencesManger.USER_API_TOKEN);
+        mToken =  SharedPreferencesManger.LoadData(activity,SharedPreferencesManger.API_TOKEN_RESTAURANT);
         getDataService = RetrofitClient.getClient().create(GetDataService.class);
         this.customView = customView;
 
@@ -74,9 +79,87 @@ public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.ViewHo
 
         if(customView==R.layout.custom_food_item){
             setActionForRestaurant(holder, position);
-        }else {
+        }else if(customView==R.layout.custom_restaurant_item) {
             setActionForClient(holder,position);
+        }else {
+            setActionForFoodItemDb(holder,position);
         }
+    }
+
+    private void setActionForFoodItemDb(ViewHolder holder, int position) {
+        int itemId = foodItemData.get(position).get_id();
+        holder.deleteFoodItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showProgressDialog(activity,context.getString(R.string.wait_moment));
+                deleteFoodItemFromDb(itemId,foodItemData.get(position));
+            }
+        });
+
+
+        holder.increaseFoodItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                increaseQuantity(itemId);
+            }
+        });
+
+
+        holder.decreaseFoodItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                decreaseQuantity(itemId);
+            }
+        });
+
+    }
+    private void decreaseQuantity(int itemId) {
+        Executors.newSingleThreadExecutor().execute(new Runnable() {
+            @Override
+            public void run() {
+                currentQuantity =AppDatabase.getInstance(context).userDao().getFoodItem(itemId).getQuantity();
+                currentQuantity--;
+                // set min value of quantity = 1
+                if (currentQuantity== 0){
+                    currentQuantity = 1;
+                }
+                // set new  value of quantity
+                setItemQuantity(itemId,currentQuantity);
+            }
+        });
+    }
+
+    private void increaseQuantity(int itemId) {
+        Executors.newSingleThreadExecutor().execute(new Runnable() {
+            @Override
+            public void run() {
+                currentQuantity =AppDatabase.getInstance(context).userDao().getFoodItem(itemId).getQuantity();
+                currentQuantity++;
+                // set new  value of quantity
+                setItemQuantity(itemId,currentQuantity);
+            }
+        });
+    }
+
+    private void setItemQuantity(int itemId,int newQuantity) {
+        Executors.newSingleThreadExecutor().execute(new Runnable() {
+            @Override
+            public void run() {
+                AppDatabase.getInstance(context).userDao().updateFoodItemQuantity(itemId,newQuantity);
+            }
+        });
+    }
+
+    private void deleteFoodItemFromDb(int itemId,FoodItemData foodItemData) {
+        Executors.newSingleThreadExecutor().execute(new Runnable() {
+            @Override
+            public void run() {
+                //AppDatabase.getInstance(context).userDao().deleteFoodItem(itemId);
+                AppDatabase.getInstance(context).userDao().deleteFoodItem(foodItemData);
+
+                dismissProgressDialog();
+            }
+        });
     }
 
     private void setActionForClient(ViewHolder holder, int position) {
@@ -138,9 +221,7 @@ public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.ViewHo
                         } catch (Exception e) {
 
                         }
-
                     }
-
                     @Override
                     public void onFailure(Call<FoodItem> call, Throwable t) {
                         dismissProgressDialog();
@@ -149,7 +230,6 @@ public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.ViewHo
                 });
             }
         }
-
     }
 
     private void setData(FoodItemAdapter.ViewHolder holder, int position) {
@@ -172,8 +252,10 @@ public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.ViewHo
                 holder.foodItemOfferPrice.setVisibility(View.GONE);
             }
         }
+        if (customView == R.layout.custom_food_item_room_db){
+            holder.foodItemQuantity.setText(foodItemData.get(position).getQuantity()+"");
+        }
     }
-
 
     @Override
     public int getItemCount() {
@@ -187,15 +269,18 @@ public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.ViewHo
         public TextView foodItemDetails;
         public TextView foodItemPrice;
         public TextView foodItemOfferPrice;
+        public TextView foodItemQuantity ;
         public View offerLine ;
-
 
         public CircleImageView foodItemImage;
         public ImageView foodImage;
 
-
         public ImageView delete;
         public ImageView update;
+        public ImageView deleteFoodItem;
+
+        public Button increaseFoodItem ;
+        public Button decreaseFoodItem ;
 
 
         public ViewHolder(View itemView) {
@@ -211,10 +296,16 @@ public class FoodItemAdapter extends RecyclerView.Adapter<FoodItemAdapter.ViewHo
                 update = itemView.findViewById(R.id.food_item_update);
                 foodItemImage = itemView.findViewById(R.id.food_item_image);
 
-            }else {
+            }else  {
                 foodImage = itemView.findViewById(R.id.food_item_image);
                 foodItemOfferPrice = itemView.findViewById(R.id.food_item_offer_price);
                 offerLine = itemView.findViewById(R.id.offer_line);
+                if(customView == R.layout.custom_food_item_room_db){
+                    deleteFoodItem = itemView.findViewById(R.id.food_item_delete);
+                    foodItemQuantity = itemView.findViewById(R.id.offer_food_fragment_tv_display_quantity);
+                    increaseFoodItem = itemView.findViewById(R.id.offer_food_fragment_btn_increase);
+                    decreaseFoodItem = itemView.findViewById(R.id.offer_food_fragment_btn_decrease);
+                }
             }
         }
     }

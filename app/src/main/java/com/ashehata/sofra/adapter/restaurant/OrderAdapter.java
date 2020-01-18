@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
@@ -18,23 +17,12 @@ import com.ashehata.sofra.R;
 import com.ashehata.sofra.data.api.GetDataService;
 import com.ashehata.sofra.data.api.RetrofitClient;
 import com.ashehata.sofra.data.local.shared.SharedPreferencesManger;
-import com.ashehata.sofra.data.model.reataurant.offer.Offer;
-import com.ashehata.sofra.data.model.reataurant.offer.OfferData;
 import com.ashehata.sofra.data.model.reataurant.order.OrderData;
-import com.ashehata.sofra.helper.InternetState;
 import com.ashehata.sofra.ui.activity.BaseActivity;
 
 import java.util.List;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-import static com.ashehata.sofra.helper.HelperMethod.createToast;
-import static com.ashehata.sofra.helper.HelperMethod.dismissProgressDialog;
 import static com.ashehata.sofra.helper.HelperMethod.onLoadImageFromUrl;
-import static com.ashehata.sofra.helper.HelperMethod.showProgressDialog;
 
 public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder>  {
 
@@ -51,7 +39,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
         this.activity = (BaseActivity) activity;
         this.context = context;
         this.orderData = orderData;
-        mToken =  SharedPreferencesManger.LoadData(activity,SharedPreferencesManger.USER_API_TOKEN);
+        mToken =  SharedPreferencesManger.LoadData(activity,SharedPreferencesManger.API_TOKEN_RESTAURANT);
         getDataService = RetrofitClient.getClient().create(GetDataService.class);
 
     }

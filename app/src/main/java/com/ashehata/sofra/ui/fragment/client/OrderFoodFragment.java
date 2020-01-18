@@ -11,14 +11,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ashehata.sofra.R;
+import com.ashehata.sofra.data.local.room.AppDatabase;
 import com.ashehata.sofra.data.model.reataurant.foodItem.FoodItemData;
-import com.ashehata.sofra.helper.HelperMethod;
 import com.ashehata.sofra.ui.fragment.BaseFragment;
+
+import java.util.concurrent.Executors;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static com.ashehata.sofra.helper.HelperMethod.ReplaceFragment;
 import static com.ashehata.sofra.helper.HelperMethod.disappearKeypad;
 import static com.ashehata.sofra.helper.HelperMethod.onLoadImageFromUrl;
 import static java.lang.Integer.parseInt;
@@ -26,7 +29,6 @@ import static java.lang.Integer.parseInt;
 public class OrderFoodFragment extends BaseFragment {
 
 
-    public FoodItemData foodItemData;
     @BindView(R.id.offer_food_fragment_iv_image)
     ImageView offerFoodFragmentIvImage;
     @BindView(R.id.offer_food_fragment_tv_name)
@@ -49,7 +51,10 @@ public class OrderFoodFragment extends BaseFragment {
     Button offerFoodFragmentBtnDecrease;
     @BindView(R.id.offer_food_fragment_btn_confirm)
     ImageView offerFoodFragmentBtnConfirm;
-    private int currentNum;
+
+    public FoodItemData foodItemData;
+    private int currentQuantity;
+    private String foodItemNote ="" ;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -89,24 +94,44 @@ public class OrderFoodFragment extends BaseFragment {
     @OnClick({R.id.offer_food_fragment_btn_increase, R.id.offer_food_fragment_btn_decrease, R.id.offer_food_fragment_btn_confirm})
     public void onViewClicked(View view) {
         disappearKeypad(getActivity(),getView());
-        currentNum = parseInt(offerFoodFragmentBtnDisplayQuantity.getText().toString());
+        currentQuantity = parseInt(offerFoodFragmentBtnDisplayQuantity.getText().toString());
         switch (view.getId()) {
             case R.id.offer_food_fragment_btn_increase:
-                currentNum ++;
-                offerFoodFragmentBtnDisplayQuantity.setText(currentNum+"");
+                currentQuantity++;
+                offerFoodFragmentBtnDisplayQuantity.setText(currentQuantity +"");
 
                 break;
             case R.id.offer_food_fragment_btn_decrease:
-                currentNum --;
-                if(currentNum == 0){
-                    currentNum = 1;
+                currentQuantity--;
+                if(currentQuantity == 0){
+                    currentQuantity = 1;
                     return;
                 }
-                offerFoodFragmentBtnDisplayQuantity.setText(currentNum+"");
+                offerFoodFragmentBtnDisplayQuantity.setText(currentQuantity +"");
 
                 break;
             case R.id.offer_food_fragment_btn_confirm:
+                //store FoodItem in DataBase
+                storeFoodItem();
+                ReplaceFragment(getFragmentManager()
+                        , new FoodItemsFragment(), R.id.home_activity_fl_display
+                        , true);
                 break;
+        }
+    }
+    private void storeFoodItem() {
+        if (foodItemData != null){
+            //get food item note from ET
+            foodItemNote = offerFoodFragmentEtSpecialOffer.getText().toString().trim();
+            foodItemData.setNote(foodItemNote);
+            //get current quantity
+            foodItemData.setQuantity(currentQuantity);
+            Executors.newSingleThreadExecutor().execute(new Runnable() {
+                @Override
+                public void run() {
+                    AppDatabase.getInstance(getContext()).userDao().insertFoodItem(foodItemData);
+                }
+            });
         }
     }
 }

@@ -76,13 +76,13 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void clientCycle() {
-//        SharedPreferencesManger.SaveUserType(this,TYPE_CLIENT);
+        SharedPreferencesManger.SaveUserType(this,TYPE_CLIENT);
         userType = TYPE_CLIENT ;
         startNewActivity(HomeActivity.class);
     }
 
     private void restaurantCycle() {
-//        SharedPreferencesManger.SaveUserType(this,TYPE_RESTAURANT);
+        SharedPreferencesManger.SaveUserType(this,TYPE_RESTAURANT);
         userType = TYPE_RESTAURANT ;
         b = SharedPreferencesManger.LoadBoolean(this,SharedPreferencesManger.REMEMBER_RESTAURANT);
        if(b){
@@ -93,7 +93,7 @@ public class SplashActivity extends BaseActivity {
        }
     }
     private void startNewActivity(Class<?> activity){
-        startActivity(new Intent(this, activity).setType(userType));
+        startActivity(new Intent(this, activity));
         finish();
     }
 

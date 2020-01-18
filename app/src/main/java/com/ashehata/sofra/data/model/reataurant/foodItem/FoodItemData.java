@@ -1,14 +1,28 @@
 
 package com.ashehata.sofra.data.model.reataurant.foodItem;
 
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class FoodItemData {
+import java.io.Serializable;
+
+@Entity(tableName = "FoodItemData")
+public class FoodItemData implements Serializable {
+
+    @PrimaryKey(autoGenerate = true )
+    @SerializedName("_id")
+    @Expose
+    private int _id;
 
     @SerializedName("id")
     @Expose
-    private Integer id;
+    @Ignore
+    private int id;
+
     @SerializedName("created_at")
     @Expose
     private String createdAt;
@@ -43,10 +57,51 @@ public class FoodItemData {
     @Expose
     private Boolean hasOffer;
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    @SerializedName("quantity")
+    @Expose
+    private int quantity;
+    @SerializedName("note")
+    @Expose
+    private String note;
+
+    /*
+    public FoodItemData(int id, String restaurantId , String description , String photoUrl){
+        this.id = id ;
+        this.restaurantId = restaurantId ;
+        this.description = description ;
+        this.photoUrl = photoUrl ;
+    }
+
+     */
+    public int get_id() {
+        return _id;
+    }
+
+    public void set_id(int _id) {
+        this._id = _id;
+    }
+
+    @Ignore
     public Integer getId() {
         return id;
     }
-
+    @Ignore
     public void setId(Integer id) {
         this.id = id;
     }

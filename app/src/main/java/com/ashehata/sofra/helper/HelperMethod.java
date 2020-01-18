@@ -33,6 +33,8 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.ashehata.sofra.R;
 import com.ashehata.sofra.data.model.DateModel;
@@ -64,6 +66,7 @@ public class HelperMethod {
     public static String ORDER_PENDING = "pending";
     public static String ORDER_CURRENT = "current";
     public static String ORDER_COMPLETED = "completed";
+    private static LinearLayoutManager linearLayoutManager;
 
     //public static Snackbar snackbar;
 
@@ -421,7 +424,14 @@ public class HelperMethod {
 
 
     }
+    //set recycler view configuration
+    public static void setRecyclerConfig(RecyclerView recyclerView , Context context) {
 
+        linearLayoutManager = new LinearLayoutManager(context);
+        // Set items on linear manager
+        recyclerView.setLayoutManager(linearLayoutManager);
 
-
+        // Fixed size
+        recyclerView.setHasFixedSize(true);
+    }
 }

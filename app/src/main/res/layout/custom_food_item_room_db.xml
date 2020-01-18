@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:paddingStart="@dimen/dim_12dp"
+    android:paddingEnd="@dimen/dim_12dp"
+    android:paddingTop="@dimen/dim_12dp"
+    android:orientation="horizontal">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/food_item_image"
+        android:layout_width="@dimen/dim_80"
+        android:layout_height="@dimen/dim_80"
+        android:padding="@dimen/dim_4dp"
+        tools:src="@drawable/pic" />
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:gravity=""
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/food_item_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/dim_4dp"
+                android:textColor="@color/colorRedLight"
+                android:textSize="@dimen/album_sp_14"
+                tools:text="@string/category_name" />
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_marginStart="@dimen/dim_8dp"
+                    android:id="@+id/food_item_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="@dimen/dim_4dp"
+                    android:gravity="center"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/album_sp_14"
+                    tools:text="@string/price" />
+
+                <View
+                    android:visibility="gone"
+                    android:layout_gravity="center"
+                    android:id="@+id/offer_line"
+                    android:background="@color/colorRedLight"
+                    android:layout_width="@dimen/album_dp_30"
+                    android:layout_height="@dimen/album_dp_2"/>
+            </FrameLayout>
+
+            <TextView
+                android:layout_marginStart="@dimen/dim_4dp"
+                android:id="@+id/food_item_offer_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/txt_16sp"
+                android:textColor="@color/colorRedLight"
+                android:layout_marginBottom="@dimen/dim_4dp"
+                tools:text="@string/price"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/food_item_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/txt_12sp"
+            android:textColor="@color/colorBlack"
+            tools:text="@string/small_description"/>
+        <LinearLayout
+            android:gravity="center|start"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                style="@style/TVmore"
+                android:layout_marginEnd="@dimen/dim_8dp"
+                android:text="@string/quantity"
+                />
+
+            <Button
+                android:textStyle="bold"
+                android:id="@+id/offer_food_fragment_btn_increase"
+                android:layout_width="@dimen/album_dp_30"
+                android:layout_height="@dimen/album_dp_30"
+                android:background="@drawable/background_shap"
+                android:elevation="@dimen/album_dp_1"
+                android:text="+"
+                android:textColor="@color/colorBlack" />
+            <TextView
+                android:gravity="center"
+                android:textStyle="bold"
+                android:id="@+id/offer_food_fragment_tv_display_quantity"
+                android:text="1"
+                android:textColor="@color/colorBlack"
+                android:layout_marginStart="@dimen/dim_8dp"
+                android:elevation="@dimen/album_dp_1"
+                android:layout_width="@dimen/dim_50dp"
+                android:layout_height="@dimen/album_dp_30"
+                android:background="@drawable/background_shap"
+                android:layout_marginEnd="@dimen/dim_8dp"
+
+                />
+
+            <Button
+                android:id="@+id/offer_food_fragment_btn_decrease"
+                android:layout_width="@dimen/album_dp_30"
+                android:layout_height="@dimen/album_dp_30"
+                android:background="@drawable/background_shap"
+                android:elevation="@dimen/album_dp_1"
+                android:text="-"
+                android:textColor="@color/colorBlack"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/food_item_delete"
+        android:elevation="@dimen/album_dp_1"
+        android:layout_width="@dimen/dim_25dp"
+        android:layout_height="@dimen/dim_25dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/album_dp_4"
+        android:layout_marginEnd="@dimen/album_dp_4"
+        android:background="@drawable/background_shap"
+        android:backgroundTint="@color/colorRedLight"
+        android:src="@drawable/ic_cancel"
+        android:tint="@color/colorWhite" />
+
+</LinearLayout>
